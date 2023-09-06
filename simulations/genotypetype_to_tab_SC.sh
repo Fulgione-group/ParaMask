@@ -4,10 +4,12 @@
 awk 'BEGIN{
 	FS=" ";
 	OFS="\t";
-	printf"%s\t%s\t%s\t%s\n", "pos", "ac", "het" , "n"
+	printf"%s\t%s\t%s\t%s\t%s\n", "pos", "ac", "het" , "n", "block"
 }{
 	het=0;
 	ac=0;
+	split(FILENAME, z,"_");
+	block=z[6];
 	for(i=2;i<=NF;i++){
 		if(i%2==0){
 			a=$i
@@ -30,6 +32,6 @@ awk 'BEGIN{
 			a=0
 		}
 	};
-	printf"%s\t%s\t%s\t%s\n", $1, ac, het , (NF-1)
+	printf"%s\t%s\t%s\t%s\t%s\n", $1, ac, het , (NF-1), "SC_"block;
 }' $1 > $2
 

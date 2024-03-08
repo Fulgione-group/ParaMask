@@ -19,7 +19,7 @@ This stage harnesses population genomic signatures of multicopies for seed SNP g
 In the final step, SNPs are clustered into multicopy haplotypes, and a comprehensive SNP annotation is provided. This phase yields three output files:
 
 - **.finalClass.het** file The original Het file with the definitive status.
-- **clusters.txt** Cluster file outlining each multicopy SNP along with its annotation.
+- **.clusters.txt** Cluster file outlining each multicopy SNP along with its annotation.
 - **.finalClass.bed** Bed file distinguishing single- and multicopy regions.
 
 # Details 

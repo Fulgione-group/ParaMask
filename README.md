@@ -35,6 +35,10 @@ In the final step, SNPs are clustered into multicopy haplotypes, and a comprehen
         --out $PATH_TO OUTPUT #full path to the Output file, dafault is the input file. Extensions for the different files are added automatically
         --noVaryingFormat #Not recommended sets Varying genotype format of the VCF to false, default true.
 
+## 1. ParaMask_EM
+
+
+
 
 ### Run forward simulations with SeDuS
 

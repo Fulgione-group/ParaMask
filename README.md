@@ -28,7 +28,7 @@ In the final step, SNPs are clustered into multicopy haplotypes, and a comprehen
 - ```bash
   #!/bin/bash
   java -jar /PATH_TO_PARAMASK_BYTECODE/PrepareParaMaskInput_fromVCF.jar\
-        --vcf $INPUT_VCF\ #Input VCF
+        --vcf $INPUT_VCF #Input VCF
   # Optional parameters
         --missingness $MAX_MISSINGNESS_PROPORTION  #float, default = 0: no missing sites allowed
         --popfile $PATH_TO_POPFILE #Full path to popfile, a list of samples in each row, default all samples in the VCF
@@ -38,12 +38,12 @@ In the final step, SNPs are clustered into multicopy haplotypes, and a comprehen
 ## 1. ParaMask_EM
 - ```bash
   Rscript --vanilla ~/PATH_TO_PARAMASK_SRC/ParaMask_EM_v2.4.R\
-        --hetfile PATH_TO_HET_FILE\
+        --hetfile $PATH_TO_HET_FILE
   # Optional parameters
-        --outpath $PATH_TO_OUTPUTDIR\
-        --missingness $MISSINGNESS\ 
-        --verbose\ 
-        --ID RUN_ID
+        --outpath $PATH_TO_OUTPUTDIR
+        --missingness $MISSINGNESS #$MAX_MISSINGNESS_PROPORTION  #float, default = 0: no missing sites allowed
+        --verbose #Verbose shows current steps of ParaMask, fitting process of VGAM, default is false
+        --ID $RUN_ID #ID for ParaMask_EM_run, will be used in file naming
 
 
 

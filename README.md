@@ -50,8 +50,10 @@ In the final step, SNPs are clustered into multicopy haplotypes, and a comprehen
         --startline/-s $STARTING_LINE #If you want to analyses a certain subset of SNPs in the hetfile you can specify start and end lines
         --endline/-e $ENDING_LINE
         --boundary/-b $CONSTRAINT_MAF #NOT RECOMMENDED effectively constraints the upper Parameter space of the MAF*(Z=="K") variable, Helps with EM convergence in extreme cases
-  ## 3. ParaMask_Cluster_Seeds
 
+
+## 3. ParaMask_Cluster_Seeds
+- ```bash
 
 
 

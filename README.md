@@ -4,9 +4,9 @@ ParaMask encompasses three main steps:
 ## 1. PrepareVCF_fromVCF.sh
 In this initial phase, a VCF (Variant Call Format) file undergoes processing to yield three ParaMaskInput files:
 
-- **Het file:** Contains essential data for the Expectation Maximization algorithm and Read Ratio Deviations.
-- **Cov file:** Illustrates coverage per sample and per site.
-- **CovGW file:** Displays genome-wide coverage of non-missing sites per individual.
+- **.het** Contains essential data for the Expectation Maximization algorithm and Read Ratio Deviations.
+- **cov.stat.txt** Illustrates coverage per sample and per site.
+- **cov.gw.txt** Displays genome-wide coverage of non-missing sites per individual.
 
 ## 2. ParaMask_EM.sh
 This stage harnesses population genomic signatures of multicopies for seed SNP generation, employing the following procedures:
@@ -18,9 +18,9 @@ This stage harnesses population genomic signatures of multicopies for seed SNP g
 ## 3. ParaMask_Cluster_Seeds.sh
 In the final step, SNPs are clustered into multicopy haplotypes, and a comprehensive SNP annotation is provided. This phase yields three output files:
 
-- The original Het file with the definitive status.
-- Cluster file outlining each multicopy SNP along with its annotation.
-- Bed file distinguishing single- and multicopy regions.
+- **.finalClass.het** file The original Het file with the definitive status.
+- **clusters.txt** Cluster file outlining each multicopy SNP along with its annotation.
+- **.finalClass.bed** Bed file distinguishing single- and multicopy regions.
 
 # Details 
 

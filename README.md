@@ -37,6 +37,7 @@ In the final step, SNPs are clustered into multicopy haplotypes, and a comprehen
 
 ## 2. ParaMask_EM
 - ```bash
+  #!/bin/bash
   Rscript --vanilla ~/PATH_TO_PARAMASK_SRC/ParaMask_EM_v2.4.R\
         --hetfile/-h $PATH_TO_HET_FILE
   # Optional parameters

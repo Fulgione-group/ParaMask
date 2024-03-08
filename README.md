@@ -33,20 +33,23 @@ In the final step, SNPs are clustered into multicopy haplotypes, and a comprehen
         --missingness/-m $MAX_MISSINGNESS_PROPORTION  #float, default = 0: no missing sites allowed
         --popfile/-p $PATH_TO_POPFILE #Full path to popfile, a list of samples in each row, default all samples in the VCF
         --out/-o $PATH_TO OUTPUT #full path to the Output file, dafault is the input file. Extensions for the different files are added automatically
-        --noVaryingFormat/nVF #Not recommended sets Varying genotype format of the VCF to false, default true.
+        --noVaryingFormat/nVF #NOT RECOMMENDED sets Varying genotype format of the VCF to false, default true.
 
 ## 1. ParaMask_EM
 - ```bash
   Rscript --vanilla ~/PATH_TO_PARAMASK_SRC/ParaMask_EM_v2.4.R\
-        --hetfile $PATH_TO_HET_FILE
+        --hetfile/-h $PATH_TO_HET_FILE
   # Optional parameters
-        --outpath $PATH_TO_OUTPUTDIR
-        --missingness $MAX_MISSINGNESS_PROPORTION  #float, default = 0.1: no missing sites allowed
-        --verbose #Verbose shows current steps of ParaMask, fitting process of VGAM, default is false
+        --outpath/-o $PATH_TO_OUTPUTDIR
+        --missingness/-m $MAX_MISSINGNESS_PROPORTION  #float, default = 0.1: no missing sites allowed
+        --verbose/-v #Verbose shows current steps of ParaMask, fitting process of VGAM, default is false
         --ID $RUN_ID #ID for ParaMask_EM_run, will be used in file naming
-        --chrom $CHROMOSOME #Use a specific chromosome only, default: all chromosomes
+        --chrom/-c $CHROMOSOME #Use a specific chromosome only, default: all chromosomes
         --noRRD #do not use RRD to classify uncertain, defaut: True
-        --tolarance $EM_TOLERANCE$ #Tolerance for Parameters estimated by the EM algorithm on heterezygote frequency, default: 0.001
+        --tolerance/-t $EM_TOLERANCE$ #Tolerance for Parameters estimated by the EM algorithm on heterezygote frequency, default: 0.001
+        --startline/-s $STARTING_LINE #If you want to analyses a certain subset of SNPs in the hetfile you can specify start and end lines
+        --endline/-e $ENDING_LINE
+        --boundary/-b $CONSTRAINT_MAF #NOT RECOMMENDED effectively constraints the upper Parameter space of the MAF*(Z=="K") variable, Helps with EM convergence in extreme cases
   
 
 

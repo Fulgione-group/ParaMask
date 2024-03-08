@@ -31,7 +31,7 @@ In the final step, SNPs are clustered into multicopy haplotypes, and a comprehen
         --vcf INPUT_VCF.sh\
   # Optional parameters
         --missingness $MaxMissingProp  #default = 0: no missing sites allowed
-        --noVaryingFormat # **NotRecommended** sets Varying genotype format of the VCF to false, default true.
+        --noVaryingFormat # Not recommended sets Varying genotype format of the VCF to false, default true.
 
 ### Run forward simulations with SeDuS
 

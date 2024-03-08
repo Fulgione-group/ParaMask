@@ -28,10 +28,12 @@ In the final step, SNPs are clustered into multicopy haplotypes, and a comprehen
 - ```bash
   #!/bin/bash
   java -jar /PATH_TO_PARAMASK_BYTECODE/PrepareParaMaskInput_fromVCF.jar\
-        --vcf INPUT_VCF\ #Input VCF
+        --vcf $INPUT_VCF\ #Input VCF
   # Optional parameters
         --missingness $MaxMissingProp  #default = 0: no missing sites allowed
-        --noVaryingFormat # Not recommended sets Varying genotype format of the VCF to false, default true.
+        --noVaryingFormat #Not recommended sets Varying genotype format of the VCF to false, default true.
+        --popfile #Full path to popfile, a list of samples in each row, default all samples in the VCF
+        --out #full path to the Output file, dafault is the input file. Extensions for the different files are added automatically 
 
 ### Run forward simulations with SeDuS
 

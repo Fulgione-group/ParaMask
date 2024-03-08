@@ -44,7 +44,7 @@ public class PrepareParaMaskInput_fromVCF {
         String popfile = null;
         float missingness = 0;
         BufferedReader readerPop = null;
-        boolean VF = false;
+        boolean VF = true;
         for (int i = 0; i < inputList.length; i++) {
             //full input path for the vcf file
             if (inputList[i].equals("--vcf") | inputList[i].equals("-v")) {
@@ -68,8 +68,8 @@ public class PrepareParaMaskInput_fromVCF {
                 i++;
             }
             // if specified the format is assumed to vary across positions
-            if (inputList[i].equals("--VaryingFormat") | inputList[i].equals("-VF")) {
-                VF = true;
+            if (inputList[i].equals("--noVaryingFormat") | inputList[i].equals("-nVF")) {
+                VF = false;
             }
         }
         // if no output path is provided it will be constructed from the input file

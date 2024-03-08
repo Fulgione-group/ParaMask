@@ -1,21 +1,27 @@
 # Overview
-ParaMask consists of 3 steps
-1. PrepareVCF_fromVCF.sh:  Computes 3 ParaMaskInput files from a VCF file
-    - Het file: file with all relevant Information for the Expectation Maximization algorithm and Read Ratio Deviations
-    - Cov file: Coverage file per sample and per site
-    - CovGW file: Genome-wide coverage of non-missing sites per individual 
-2. ParaMask_EM.sh: Utelizes population genomic signatures of multicopies for seed SNP generation.
-    - EM algorithm to jointly fit 2 Beta-binomial regressions on the heterozygote frequency with varying Minor Allele frequency: One for single-copy regions, and one for multicopy regions.
-       * Classifiaction based on the LLR
-    - RRD testing: Takes the mean and variance from the read ratio deviation of single copy classified SNPs and constructs a normal confidence interval to test previously uncertain classified SNPs
-    - EM algortihm to dissect distances of SNPs within and between multicopy regions.
-       * Takes distances between seed SNPs and calculates mean parameters of a mixture of geometric_distributions.
-       * We set the cutoff distance to where the the two geometrics have the same density.
-       * To make this procedure more stable by default we repeat this procedure 1000 and take the median cutoff.
-3. ParaMask_Cluster_Seeds.sh: Cluster SNPs into multicopy haplotypes and gives final annation of SNPs, using Seeds, coverage and distance. Computes three Outputfiles:
-    - The original Het file with final status
-    - Cluster file with each multicopy SNP and annotation
-    - Bed file with single- and multicopy regions
+ParaMask encompasses three main steps:
+
+## 1. PrepareVCF_fromVCF.sh
+In this initial phase, a VCF (Variant Call Format) file undergoes processing to yield three ParaMaskInput files:
+
+- **Het file:** Contains essential data for the Expectation Maximization algorithm and Read Ratio Deviations.
+- **Cov file:** Illustrates coverage per sample and per site.
+- **CovGW file:** Displays genome-wide coverage of non-missing sites per individual.
+
+## 2. ParaMask_EM.sh
+This stage harnesses population genomic signatures of multicopies for seed SNP generation, employing the following procedures:
+
+- **EM algorithm:** Simultaneously fits two Beta-binomial regressions on heterozygote frequency, accommodating varying Minor Allele frequencies. One regression pertains to single-copy regions, while the other addresses multicopy regions. Classification hinges on the Log-Likelihood Ratio (LLR).
+- **RRD testing:** Utilizes the mean and variance from the read ratio deviation of single-copy classified SNPs to construct a normal confidence interval, validating previously uncertain classified SNPs.
+- **EM algorithm for distance dissection:** Pinpoints distances between seed SNPs within and between multicopy regions. It calculates mean parameters using a mixture of geometric distributions. The cutoff distance is established where the two geometrics have identical density. For increased stability, this process defaults to 1000 repetitions, with the median cutoff selected.
+
+## 3. ParaMask_Cluster_Seeds.sh
+In the final step, SNPs are clustered into multicopy haplotypes, and a comprehensive SNP annotation is provided. This phase yields three output files:
+
+- The original Het file with the definitive status.
+- Cluster file outlining each multicopy SNP along with its annotation.
+- Bed file distinguishing single- and multicopy regions.
+
 ## Simulations
 
 ### Run forward simulations with SeDuS

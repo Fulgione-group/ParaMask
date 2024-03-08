@@ -35,7 +35,7 @@ In the final step, SNPs are clustered into multicopy haplotypes, and a comprehen
         --out/-o $PATH_TO OUTPUT #full path to the Output file, dafault is the input file. Extensions for the different files are added automatically
         --noVaryingFormat/nVF #NOT RECOMMENDED sets Varying genotype format of the VCF to false, default true.
 
-## 1. ParaMask_EM
+## 2. ParaMask_EM
 - ```bash
   Rscript --vanilla ~/PATH_TO_PARAMASK_SRC/ParaMask_EM_v2.4.R\
         --hetfile/-h $PATH_TO_HET_FILE
@@ -50,7 +50,7 @@ In the final step, SNPs are clustered into multicopy haplotypes, and a comprehen
         --startline/-s $STARTING_LINE #If you want to analyses a certain subset of SNPs in the hetfile you can specify start and end lines
         --endline/-e $ENDING_LINE
         --boundary/-b $CONSTRAINT_MAF #NOT RECOMMENDED effectively constraints the upper Parameter space of the MAF*(Z=="K") variable, Helps with EM convergence in extreme cases
-  
+  ## 3. ParaMask_Cluster_Seeds
 
 
 

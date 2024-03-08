@@ -44,7 +44,9 @@ In the final step, SNPs are clustered into multicopy haplotypes, and a comprehen
         --missingness $MAX_MISSINGNESS_PROPORTION  #float, default = 0.1: no missing sites allowed
         --verbose #Verbose shows current steps of ParaMask, fitting process of VGAM, default is false
         --ID $RUN_ID #ID for ParaMask_EM_run, will be used in file naming
-
+        --chrom $CHROMOSOME #Use a specific chromosome only, default: all chromosomes
+        --noRRD #do not use RRD to classify uncertain, defaut: True
+  
 
 
 

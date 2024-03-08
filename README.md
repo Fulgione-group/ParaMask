@@ -12,7 +12,10 @@ ParaMask consists of 3 steps
        * Takes distances between seed SNPs and calculates mean parameters of a mixture of geometric_distributions.
        * We set the cutoff distance to where the the two geometrics have the same density.
        * To make this procedure more stable by default we repeat this procedure 1000 and take the median cutoff.
-3. ParaMask_Cluster_Seeds.sh: Cluster SNPs into multicopy haplotypes 
+3. ParaMask_Cluster_Seeds.sh: Cluster SNPs into multicopy haplotypes and gives final annation of SNPs, using Seeds, coverage and distance. Computes three Outputfiles:
+    - The original Het file with final status
+    - Cluster file with each multicopy SNP and annotation
+    - Bed file with single- and multicopy regions
 ## Simulations
 
 ### Run forward simulations with SeDuS

@@ -22,7 +22,7 @@ In the final step, SNPs are clustered into multicopy haplotypes, and a comprehen
 - Cluster file outlining each multicopy SNP along with its annotation.
 - Bed file distinguishing single- and multicopy regions.
 
-## Simulations
+# Details 
 
 ### Run forward simulations with SeDuS
 

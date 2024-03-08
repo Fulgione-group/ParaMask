@@ -5,8 +5,8 @@ ParaMask encompasses three main steps:
 In this initial phase, a VCF (Variant Call Format) file undergoes processing to yield three ParaMaskInput files:
 
 - **.het** Contains essential data for the Expectation Maximization algorithm and Read Ratio Deviations.
-- **cov.stat.txt** Illustrates coverage per sample and per site.
-- **cov.gw.txt** Displays genome-wide coverage of non-missing sites per individual.
+- **.cov.stat.txt** Illustrates coverage per sample and per site.
+- **.cov.gw.txt** Displays genome-wide coverage of non-missing sites per individual.
 
 ## 2. ParaMask_EM.sh
 This stage harnesses population genomic signatures of multicopies for seed SNP generation, employing the following procedures:

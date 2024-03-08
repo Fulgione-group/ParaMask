@@ -28,7 +28,7 @@ In the final step, SNPs are clustered into multicopy haplotypes, and a comprehen
 - ```bash
   #!/bin/bash
   java -jar /PATH_TO_PARAMASK_BYTECODE/PrepareParaMaskInput_fromVCF.jar\
-        --vcf INPUT_VCF.sh\
+        --vcf INPUT_VCF\ #Input VCF
   # Optional parameters
         --missingness $MaxMissingProp  #default = 0: no missing sites allowed
         --noVaryingFormat # Not recommended sets Varying genotype format of the VCF to false, default true.

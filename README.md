@@ -28,10 +28,9 @@ In the final step, SNPs are clustered into multicopy haplotypes, and a comprehen
 - ```bash
   #!/bin/bash
   java -jar /PATH_TO_PARAMASK_BYTECODE/PrepareParaMaskInput_fromVCF.jar\
-        -VF\
         --vcf INPUT_VCF.sh\
-        --missingness 0.1
-
+  # Optional parameters
+        --missingness $MaxMissingProp  #default = 0: no missing sites allowed  
 
 ### Run forward simulations with SeDuS
 

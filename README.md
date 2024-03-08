@@ -28,12 +28,12 @@ In the final step, SNPs are clustered into multicopy haplotypes, and a comprehen
 - ```bash
   #!/bin/bash
   java -jar /PATH_TO_PARAMASK_BYTECODE/PrepareParaMaskInput_fromVCF.jar\
-        --vcf $INPUT_VCF #Input VCF
+        --vcf/-v $INPUT_VCF #Input VCF
   # Optional parameters
-        --missingness $MAX_MISSINGNESS_PROPORTION  #float, default = 0: no missing sites allowed
-        --popfile $PATH_TO_POPFILE #Full path to popfile, a list of samples in each row, default all samples in the VCF
-        --out $PATH_TO OUTPUT #full path to the Output file, dafault is the input file. Extensions for the different files are added automatically
-        --noVaryingFormat #Not recommended sets Varying genotype format of the VCF to false, default true.
+        --missingness/-m $MAX_MISSINGNESS_PROPORTION  #float, default = 0: no missing sites allowed
+        --popfile/-p $PATH_TO_POPFILE #Full path to popfile, a list of samples in each row, default all samples in the VCF
+        --out/-o $PATH_TO OUTPUT #full path to the Output file, dafault is the input file. Extensions for the different files are added automatically
+        --noVaryingFormat/nVF #Not recommended sets Varying genotype format of the VCF to false, default true.
 
 ## 1. ParaMask_EM
 - ```bash
@@ -46,6 +46,7 @@ In the final step, SNPs are clustered into multicopy haplotypes, and a comprehen
         --ID $RUN_ID #ID for ParaMask_EM_run, will be used in file naming
         --chrom $CHROMOSOME #Use a specific chromosome only, default: all chromosomes
         --noRRD #do not use RRD to classify uncertain, defaut: True
+        --tolarance $EM_TOLERANCE$ #Tolerance for Parameters estimated by the EM algorithm on heterezygote frequency, default: 0.001
   
 
 

@@ -41,7 +41,7 @@ In the final step, SNPs are clustered into multicopy haplotypes, and a comprehen
         --hetfile $PATH_TO_HET_FILE
   # Optional parameters
         --outpath $PATH_TO_OUTPUTDIR
-        --missingness $MISSINGNESS #$MAX_MISSINGNESS_PROPORTION  #float, default = 0: no missing sites allowed
+        --missingness $MAX_MISSINGNESS_PROPORTION  #float, default = 0.1: no missing sites allowed
         --verbose #Verbose shows current steps of ParaMask, fitting process of VGAM, default is false
         --ID $RUN_ID #ID for ParaMask_EM_run, will be used in file naming
 

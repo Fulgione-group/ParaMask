@@ -36,6 +36,15 @@ In the final step, SNPs are clustered into multicopy haplotypes, and a comprehen
         --noVaryingFormat #Not recommended sets Varying genotype format of the VCF to false, default true.
 
 ## 1. ParaMask_EM
+- ```bash
+  Rscript --vanilla ~/PATH_TO_PARAMASK_SRC/ParaMask_EM_v2.4.R\
+        --hetfile PATH_TO_HET_FILE\
+  # Optional parameters
+        --outpath $PATH_TO_OUTPUTDIR\
+        --missingness $MISSINGNESS\ 
+        --verbose\ 
+        --ID RUN_ID
+
 
 
 

@@ -77,7 +77,10 @@ In the final step, SNPs are clustered into multicopy haplotypes, and a comprehen
 
 ## Output files
 
-#hetfile
+### .finalClass.het
+### .clusters.txt
+### .cov.gw.txt
+
 
 ## Example files
 

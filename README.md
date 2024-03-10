@@ -22,6 +22,11 @@ In the final step, SNPs are clustered into multicopy haplotypes, and a comprehen
 - **.clusters.txt** Cluster file outlining each multicopy SNP along with its annotation.
 - **.finalClass.bed** Bed file distinguishing single- and multicopy regions.
 
+## installation
+
+- ```bash
+  git clone 
+
 ## Details 
 
 ### 1. PrepareVCF_fromVCF

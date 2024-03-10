@@ -75,7 +75,11 @@ In the final step, SNPs are clustered into multicopy haplotypes, and a comprehen
         --purge $INTEGER #Clusters with number of SNPs <=INTEGER are purged, default = 1.
 
 
-## Outputfiles
+## Output files
+
+#hetfile
+
+## Example files
 
 
 ### Run forward simulations with SeDuS

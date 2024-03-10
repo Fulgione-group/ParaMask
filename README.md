@@ -60,7 +60,7 @@ In the final step, SNPs are clustered into multicopy haplotypes, and a comprehen
         --cov PATH_TO_COV_FILE/-c $PATH_TO_COVSTAT_FILE #
         --het PATH_TO_HET_FILE/-h $PATH_TO_HET_FILE
         --covgw PATH_TO_COVGW_FILE/-cg $PATH_TO_COVGW_FILE
-        --cutoff/-cd $INTEGER #DISTANCE_CUTOFF
+        --cutoff/-cd $INTEGER #distance cutoff
         --range $INTEGER,INTEGER #CHR_START,CHR_END
         --purge $INTEGER #Clusters with number of SNPs <=INTEGER are purged, default = 1.
 

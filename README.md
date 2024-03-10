@@ -64,6 +64,7 @@ In the final step, SNPs are clustered into multicopy haplotypes, and a comprehen
         --range $INTEGER,INTEGER #CHR_START,CHR_END
         --purge $INTEGER #Clusters with number of SNPs <=INTEGER are purged, default = 1.
 
+## Outputfiles
 
 
 ### Run forward simulations with SeDuS

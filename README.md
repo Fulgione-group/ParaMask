@@ -54,7 +54,7 @@ In the final step, SNPs are clustered into multicopy haplotypes, and a comprehen
 
 
 ## 3. ParaMask_Cluster_Seeds
--```bash
+- ```bash
  #!/bin/bash
  java -jar /PATH_TO_PARAMASK_BYTECODE/ParaMask_Cluster_Seeds.jar\
         --cov PATH_TO_COV_FILE/-c $PATH_TO_COVSTAT_FILE #

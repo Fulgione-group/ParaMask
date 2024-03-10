@@ -24,15 +24,20 @@ In the final step, SNPs are clustered into multicopy haplotypes, and a comprehen
 
 ## installation
 
+### Download
 - ```bash
-  git clone 
+  git clone https://github.com/Fulgione-group/ParaMask.git
+
+### Prerequisite
+
+
 
 ## Details 
 
 ### 1. PrepareVCF_fromVCF
 - ```bash
   #!/bin/bash
-  java -jar /PATH_TO_PARAMASK_BYTECODE/PrepareParaMaskInput_fromVCF.jar\
+  java -jar $PATH_TO_INSTALLATION_FOLDER/ParaMask/PrepareParaMaskInput_fromVCF.jar\
         --vcf/-v $INPUT_VCF #Input VCF
   # Optional parameters
         --missingness/-m $MAX_MISSINGNESS_PROPORTION  #float, default = 0: no missing sites allowed
@@ -43,7 +48,7 @@ In the final step, SNPs are clustered into multicopy haplotypes, and a comprehen
 ### 2. ParaMask_EM
 - ```bash
   #!/bin/bash
-  Rscript --vanilla ~/PATH_TO_PARAMASK_SRC/ParaMask_EM_v2.4.R\
+  Rscript --vanilla $PATH_TO_INSTALLATION_FOLDER/ParaMask/ParaMask_EM_v2.4.R\
         --hetfile/-h $PATH_TO_HET_FILE
   # Optional parameters
         --outpath/-o $PATH_TO_OUTPUTDIR
@@ -61,7 +66,7 @@ In the final step, SNPs are clustered into multicopy haplotypes, and a comprehen
 ### 3. ParaMask_Cluster_Seeds
 - ```bash
    #!/bin/bash
-   java -jar /PATH_TO_PARAMASK_BYTECODE/ParaMask_Cluster_Seeds.jar\
+   java -jar $PATH_TO_INSTALLATION_FOLDER/ParaMask/ParaMask_Cluster_Seeds.jar\
         --cov PATH_TO_COV_FILE/-c $PATH_TO_COVSTAT_FILE #
         --het PATH_TO_HET_FILE/-h $PATH_TO_HET_FILE
         --covgw PATH_TO_COVGW_FILE/-cg $PATH_TO_COVGW_FILE

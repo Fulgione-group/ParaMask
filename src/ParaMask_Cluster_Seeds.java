@@ -1,4 +1,4 @@
-package Testing_HetGenFreq_BetaBinomial;
+package ParaMask;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -26,7 +26,7 @@ import java.util.zip.GZIPInputStream;
  *
  * @author btjeng
  */
-public class Paramask_cluster_seeds {
+public class Paramask_Cluster_Seeds {
 
     public static void main(String[] args) throws FileNotFoundException, IOException {
         System.out.println("Args: " + Arrays.toString(args));
@@ -60,7 +60,7 @@ public class Paramask_cluster_seeds {
                 hetpath = inputList[(i + 1)];
                 i++;
             }
-            if (inputList[i].equals("--cutoff") | inputList[i].equals("-c")) {
+            if (inputList[i].equals("--cutoff") | inputList[i].equals("-cd")) {
                 distcutoff = Integer.parseInt(inputList[(i + 1)]);
                 i++;
             }

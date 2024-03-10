@@ -48,20 +48,21 @@ In the final step, SNPs are clustered into multicopy haplotypes, and a comprehen
         --chrom/-c $CHROMOSOME #Use a specific chromosome only, default: all chromosomes
         --noRRD #do not use RRD to classify uncertain, defaut: True
         --tolerance/-t $EM_TOLERANCE$ #Tolerance for Parameters estimated by the EM algorithm on heterezygote frequency, default: 0.001
-        --startline/-s $STARTING_LINE #If you want to analyses a certain subset of SNPs in the hetfile you can specify start and end lines
-        --endline/-e $ENDING_LINE
-        --boundary/-b $CONSTRAINT_MAF #NOT RECOMMENDED effectively constraints the upper Parameter space of the MAF*(Z=="K") variable, Helps with EM convergence in extreme cases
+        --startline/-s $INTEGER #If you want to analyses a certain subset of SNPs in the hetfile you can specify start end lines
+        --endline/-e $INTEGER #If you want to analyses a certain subset of SNPs in the hetfile you can specify start end lines
+        --boundary/-b $FLOAT #NOT RECOMMENDED effectively constraints the upper Parameter space of the MAF*(Z=="K") variable, Helps with EM convergence in extreme cases
 
 
 ## 3. ParaMask_Cluster_Seeds
  ```bash
  #!/bin/bash
  java -jar /PATH_TO_PARAMASK_BYTECODE/ParaMask_Cluster_Seeds.jar\
-        --cov PATH_TO_COV_FILE\
-        --het PATH_TO_HET_FILE\
-        --covgw PATH_TO_COVGW_FILE\
-        --cutoff  DISTANCE_CUTOFF\
+        --cov PATH_TO_COV_FILE/-c $PATH_TO_COVSTAT_FILE #
+        --het PATH_TO_HET_FILE/-h $PATH_TO_HET_FILE
+        --covgw PATH_TO_COVGW_FILE/-cg $PATH_TO_COVGW_FILE
+        --cutoff/-cd $INTEGER #DISTANCE_CUTOFF
         --range CHR_START,CHR_END
+        --purge 
 
 
 

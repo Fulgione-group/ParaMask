@@ -70,20 +70,20 @@ In the final step, SNPs are clustered into multicopy haplotypes, and a comprehen
         --missingness 0.1    
   ```
   Required parameters:
-        **--hetfile/-h** Input path to het file
+        > **--hetfile/-h** Input path to het file
   
 
   Optional parameters:
-        **--outpath/-o** Input path to output directory
-        **--missingness/-m** Input float, default = 0.1: no missing sites allowed
-        **--verbose/-v** #Verbose shows current steps of ParaMask, fitting process of VGAM, default is false
-        **--ID $RUN_ID** #ID for ParaMask_EM_run, will be used in file naming
-        **--chrom/-c** $CHROMOSOME #Use a specific chromosome only, default: all chromosomes
-        **--noRRD** #do not use RRD to classify uncertain, defaut: True
-        **--tolerance/-t** $EM_TOLERANCE$ #Tolerance for Parameters estimated by the EM algorithm on heterezygote frequency, default: 0.001
-        **--startline/-s** $INTEGER #If you want to analyses a certain subset of SNPs in the hetfile you can specify start end lines
-        **--endline/-e** $INTEGER #If you want to analyses a certain subset of SNPs in the hetfile you can specify start end lines
-        **--boundary/-b** $FLOAT #NOT RECOMMENDED effectively constraints the upper Parameter space of the MAF*(Z=="K") variable, Helps with EM convergence in extreme cases
+        > **--outpath/-o** Input path to output directory
+        > **--missingness/-m** Input float, default = 0.1: no missing sites allowed
+        > **--verbose/-v** #Verbose shows current steps of ParaMask, fitting process of VGAM, default is false
+        > **--ID $RUN_ID** #ID for ParaMask_EM_run, will be used in file naming
+        > **--chrom/-c** $CHROMOSOME #Use a specific chromosome only, default: all chromosomes
+        > **--noRRD** #do not use RRD to classify uncertain, defaut: True
+        > **--tolerance/-t** $EM_TOLERANCE$ #Tolerance for Parameters estimated by the EM algorithm on heterezygote frequency, default: 0.001
+        > **--startline/-s** $INTEGER #If you want to analyses a certain subset of SNPs in the hetfile you can specify start end lines
+        > **--endline/-e** $INTEGER #If you want to analyses a certain subset of SNPs in the hetfile you can specify start end lines
+        > **--boundary/-b** $FLOAT #NOT RECOMMENDED effectively constraints the upper Parameter space of the MAF*(Z=="K") variable, Helps with EM convergence in extreme cases
 
 
 ### 3. ParaMask_Cluster_Seeds

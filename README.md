@@ -70,12 +70,11 @@ In the final step, SNPs are clustered into multicopy haplotypes, and a comprehen
         --missingness 0.1    
   ```
 
-Required:
-   
+|Required|   
 | Option                | Description |
 |-----------------------|-------------|
 | **--hetfile/-h**      | Input path to het file |
-|Optional:|
+|Optional|
 | Option                | Description |
 |-----------------------|-------------|
 | **--outpath/-o**      | Input path to the output directory |

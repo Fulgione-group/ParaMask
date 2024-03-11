@@ -78,8 +78,8 @@ In the final step, SNPs are clustered into multicopy haplotypes, and a comprehen
 ## Output files
 
 ### .finalClass.het
-```
- Chromosome	Position	Non.missing	Minor.allele.freq	Heterozygous.geno.freq	Homozygous1.geno.freq	Homozygous2.geno.freq	Mean.coverage	Mean.coverage.hom	Mean.coverage.het	Het.reference.allele.depth	Het.alt.allele.depth	Het.allele.ratio	Het.allele.deviation	L1	L2	LLR	EM_class	allele.deviation.seed	finalClass	cluster
+- ```
+  Chromosome	Position	Non.missing	Minor.allele.freq	Heterozygous.geno.freq	Homozygous1.geno.freq	Homozygous2.geno.freq	Mean.coverage	Mean.coverage.hom	Mean.coverage.het	Het.reference.allele.depth	Het.alt.allele.depth	Het.allele.ratio	Het.allele.deviation	L1	L2	LLR	EM_class	allele.deviation.seed	finalClass	cluster
 
 ### .clusters.txt
 ### .cov.gw.txt

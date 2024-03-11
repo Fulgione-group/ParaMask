@@ -31,17 +31,19 @@ In the final step, SNPs are clustered into multicopy haplotypes, and a comprehen
 - **.clusters.txt** Cluster file outlining each multicopy SNP along with its annotation.
 - **.finalClass.bed** Bed file distinguishing single- and multicopy regions.
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 ## installation
 
 ### Download
 - ```bash
   git clone https://github.com/Fulgione-group/ParaMask.git
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
 ### Prerequisite
 
 **tested on**

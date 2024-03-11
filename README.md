@@ -70,25 +70,25 @@ In the final step, SNPs are clustered into multicopy haplotypes, and a comprehen
         --missingness 0.1    
   ```
 
-Required parameters:
+Required:
    
 | Option                | Description |
 |-----------------------|-------------|
 | **--hetfile/-h**      | Input path to het file |
 
-Optional parameters:
+|Optional:|
 | Option                | Description |
 |-----------------------|-------------|
 | **--outpath/-o**      | Input path to the output directory |
 | **--missingness/-m**  | Input float, default = 0.1: no missing sites allowed |
 | **--verbose/-v**      | Verbose shows current steps of ParaMask, fitting process of VGAM, default is false |
-| **--ID $RUN_ID**      | ID for ParaMask_EM_run, will be used in file naming |
-| **--chrom/-c**        | $CHROMOSOME, Use a specific chromosome only, default: all chromosomes |
-| **--noRRD**           | Do not use RRD to classify uncertain, default: True |
-| **--tolerance/-t**    | $EM_TOLERANCE$, Tolerance for Parameters estimated by the EM algorithm on heterozygote frequency, default: 0.001 |
-| **--startline/-s**    | $INTEGER, If you want to analyze a certain subset of SNPs in the hetfile, you can specify start and end lines |
-| **--endline/-e**      | $INTEGER, If you want to analyze a certain subset of SNPs in the hetfile, you can specify start and end lines |
-| **--boundary/-b**     | $FLOAT, NOT RECOMMENDED, effectively constrains the upper Parameter space of the MAF*(Z=="K") variable, helps with EM convergence in extreme cases |
+| **--ID $RUN_ID**      | Input ID for file naming |
+| **--chrom/-c**        | Input chromosome to only use a specific chromosome. Default: all chromosomes |
+| **--noRRD**           | Do not use RRD to classify uncertain. Default: True |
+| **--tolerance/-t**    | Input tolerance for parameters estimated by the EM algorithm on heterozygote frequency, default: 0.001 |
+| **--startline/-s**    | Iput starting line of the het file, default=2 |
+| **--endline/-e**      | Iput ending line of the het file, default last line|
+| **--boundary/-b**     | Input constrains to upper Parameter space of the MAF*(Z=="K") variable, helps with EM convergence in extreme cases |
 
 
 

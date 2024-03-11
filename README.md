@@ -79,6 +79,29 @@ In the final step, SNPs are clustered into multicopy haplotypes, and a comprehen
 
 ### .finalClass.het
 
+Columns:
+1. Chromosome
+2. Position
+3. Number of non missing genotypes
+4. Minor allele frequency
+5. Heterozygous genotype frequency
+6. Homozygous genotype frequency of the major allele
+7. Homozyhous genotype frequency of the minor allele
+8. Mean coverage across genotypes
+9. Mean coverage across homozygous genotypes
+10. Mean coverage across heterozygote genotypes
+11. Reference allele depth of all heterozygote genotypes
+12. Alternative allele depth
+13. Allelic ratio (11/12)
+14. Read ratio deviation (RRD, based on 13)
+15. Likelihood of SNP beeing single-copy
+16. Likelihood of SNP beeing multicopy
+17. Likelihood ratio
+18. Classification after EM step: 0 = single-copy; 1 = uncertain; 2 = multicopy-Seed
+19. Seed because of allelic ratio deviation: 0 = no Seed/ Seed based on EM; 1 = Seed because of RRD (EM classified uncertain before)
+20. Final status: 0= single copy; 1 = muliticopy
+21. cluster Number: 0 = no cluster (single copy); 1...N = multicopy
+
 | Chromosome | Position | Non.missing | Minor.allele.freq | Heterozygous.geno.freq | Homozygous1.geno.freq | Homozygous2.geno.freq | Mean.coverage | Mean.coverage.hom | Mean.coverage.het | Het.reference.allele.depth | Het.alt.allele.depth | Het.allele.ratio | Het.allele.deviation | L1 | L2 | LLR | EM_class | allele.deviation.seed | finalClass | cluster | 
 |------------|----------|-------------|---------------------|-------------------------|-------------------------|-------------------------|----------------|---------------------|---------------------|---------------------------|-----------------------|-------------------|-----------------------|----|----|-----|----------|------------------------|------------|---------|
 | chr1       | 11065    | 100         | 0.025               | 0.05                    | 0.95                    | 0                       | 19.96          | 19.83158             | 22.4                | 80                        | 32                    | 0.71428573        | 4.5355735 | 0.411559811962468 |  0.963941228136795 | -0.851075965471138	      | 2  | 1  |  1          | 1       |

@@ -119,7 +119,7 @@ Example:
 | **--outdir/-o**      | Input full path to the output directory |
 | **--missingness/-m**  | Input float, default = 0: no missing sites allowed |
 | **--verbose/-v**      | Verbose shows current steps of ParaMask, fitting process of VGAM, default is false |
-| **--ID $RUN_ID**      | Input ID for file naming |
+| **--ID**      | Input ID for file naming |
 | **--chrom/-c**        | Input chromosome name to only use a specific chromosome. Default: all chromosomes |
 | **--noRRD**           | Do not use RRD to classify uncertain. Default: True |
 | **--tolerance/-t**    | Input tolerance for parameters estimated by the EM algorithm on heterozygote frequency, default: 0.001 |

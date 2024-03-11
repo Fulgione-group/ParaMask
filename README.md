@@ -98,7 +98,20 @@ Option                  Description
 **--endline/-e**        $INTEGER, If you want to analyze a certain subset of SNPs in the hetfile, you can specify start and end lines
 **--boundary/-b**       $FLOAT, NOT RECOMMENDED, effectively constrains the upper Parameter space of the MAF*(Z=="K") variable, helps with EM convergence in extreme cases
 
+import panel as pn
+from bokeh.resources import INLINE
 
+SimpleTable = pn.panel("""
+|     Time    | Number of Trial with Results | Unique Units |
+|:-----------:|:----------------------------:|:------------:|
+| 20 Apr 2018 |            30,763            |    21,094    |
+|  7 Feb 2019 |            34,751            |    23,733    |
+| 12 Apr 2019 |            35,926            |    24,548    |
+|             |                              |              |
+
+""")
+
+SimpleTable.save('SimpleTable', resources=INLINE) 
 ### 3. ParaMask_Cluster_Seeds
 - ```bash
    #!/bin/bash

@@ -265,7 +265,8 @@ ParaMask outputs diagnostic plots in pdf format
   * Plot of the Log-Likelihood-Ratio
 3. **AR.pdf** and **RRD.pdf**
   * Plots of Allelic Ratios and Read Ratio deviations (and densities) grouped by EM classfication (single-copy, multicopy, uncertain)
-
+4. **dist.pdf**
+  * Diagnostice distance plot
 <br>
 <br>
 <br>

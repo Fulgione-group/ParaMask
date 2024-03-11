@@ -30,7 +30,15 @@ In the final step, SNPs are clustered into multicopy haplotypes, and a comprehen
 
 ### Prerequisite
 
+**tested on**
+#### R
+R version 4.0.4
+VGAM version 1.1.8
+ggplot2 version 3.4.0
 
+#### Java
+byte code generated for java version   1.8
+You can compile bytecode from source located in the ParaMask/src folder
 
 ## Details 
 

@@ -36,7 +36,12 @@ In the final step, SNPs are clustered into multicopy haplotypes, and a comprehen
 ### Download
 - ```bash
   git clone https://github.com/Fulgione-group/ParaMask.git
-
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 ### Prerequisite
 
 **tested on**
@@ -48,6 +53,13 @@ In the final step, SNPs are clustered into multicopy haplotypes, and a comprehen
 #### Java
 - byte code generated for java version   1.8 using gradle
 - You can compile bytecode from source located in the ParaMask/src folder
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ## Usage 
 
@@ -126,6 +138,13 @@ Example:
 | **--range**                             | Integer,Integer CHR_START,CHR_END                           |
 |**Optional**|
 | **--purge**                             | Number of SNPs per Clusters such that  <= are purged. Default = 1 |
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 
 ## Output files
@@ -212,11 +231,14 @@ Columns:
 | chr1       | 10641    | 1       | 2       | seed         | 19.525           | 12.643446          | genotype_5:genotype_15:genotype_68:genotype_78:genotype_93       |
 
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ## Example files
 
 
-### Run forward simulations with SeDuS
 
-
-### Process Output files

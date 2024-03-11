@@ -1,4 +1,6 @@
 ## Overview
+<br>
+
 ParaMask encompasses three main steps:
 
 ### 1. PrepareVCF_fromVCF
@@ -7,6 +9,8 @@ In this initial phase, a VCF (Variant Call Format) file undergoes processing to 
 - **.het** Contains essential data for the Expectation Maximization algorithm and Read Ratio Deviations.
 - **.cov.stat.txt** Encodes coverage per sample and per site.
 - **.cov.gw.txt** Displays genome-wide coverage of non-missing sites per individual.
+
+<br>
 
 ### 2. ParaMask_EM
 This stage harnesses population genomic signatures of multicopies for seed SNP generation, employing the following procedures:
@@ -23,6 +27,7 @@ Creates two intermediate Output files
 Automated plotting generates visualization:
 
 
+<br>
 
 ### 3. ParaMask_Cluster_Seeds
 In the final step, SNPs are clustered into multicopy haplotypes, and a comprehensive SNP annotation is provided. This phase yields three output files:
@@ -40,11 +45,15 @@ In the final step, SNPs are clustered into multicopy haplotypes, and a comprehen
 
 ## installation
 
+<br>
+
 ### Download
 - ```bash
   git clone https://github.com/Fulgione-group/ParaMask.git
 
 ### Prerequisite
+
+<br>
 
 **tested on**
 #### R
@@ -64,6 +73,8 @@ In the final step, SNPs are clustered into multicopy haplotypes, and a comprehen
 <br>
 
 ## Usage 
+
+<br>
 
 ### 1. PrepareVCF_fromVCF
 
@@ -120,6 +131,8 @@ Example:
 
 ### 3. ParaMask_Cluster_Seeds
 
+<br>
+
 Example:
 ```bash
    #!/bin/bash
@@ -130,6 +143,7 @@ Example:
         --cutoff $INTEGER\
         --range 1,1000000
 ```
+
 <br>
 
 | Option                                  | Description                                                  |
@@ -153,6 +167,8 @@ Example:
 
 ## Output files
 
+<br>
+
 ### .finalClass.bed
 
 **For most users probably the most important output file** <br>
@@ -174,8 +190,10 @@ Columns:
 | chr1       | 19265 | 22208 | 1                                      | 51   | 2       |
 | chr1       | 22209 | 36211 | 0                                      | 80   | 0       |
 
+<br>
 
 ### .finalClass.het
+
 
 This file contains all per SNP statistics and results used for classification
 
@@ -211,9 +229,11 @@ Columns:
 | chr1       | 12373    | 99          | 0.030303031         | 0.060606062             | 0.93939394              | 0                       | 10.565657      | 10.634409            | 9.5                 | 30                        | 27                    | 0.5263158         | 0.3973597 | 0.338789194072882 | 0.957120910950128 | -1.03855165964169 | 1  | 0  | 0          | 0       |
 
 
-
+<br>
 
 ### .clusters.txt
+
+
 
 This files contains additional per multicopy SNP statistics, with details on why they classified and which genotypes are involved.
 

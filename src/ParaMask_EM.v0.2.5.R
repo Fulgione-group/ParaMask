@@ -30,7 +30,7 @@ for(i in 1:length(args)){
 }
 
 for(i in 1:length(args)){
-  if (args[i]=="--hetfile" | args[i]=="-h" ){
+  if (args[i]=="--het" | args[i]=="-h" ){
      hetpath <- args[(i+1)]
      i <- i + 1
   } else if (args[i]=="--chrom" | args[i]=="-c" ){
@@ -45,7 +45,7 @@ for(i in 1:length(args)){
   } else if (args[i]=="--missingness" | args[i]=="-m" ){
     missingness <- as.numeric(args[(i+1)])
     i <- i + 1
-  } else if (args[i]=="--outpath" | args[i]=="-o" ){
+  } else if (args[i]=="--outdir" | args[i]=="-o" ){
     outpath <- as.character(args[(i+1)])
     i <- i + 1
   } else if (args[i]=="--ID" | args[i]=="-id" ){
@@ -73,6 +73,10 @@ for(i in 1:length(args)){
   }
 }
 
+if(!endsWith(x = outpath, suffix = "/")){
+  outpath<- paste(outpath, "/", sep="")
+}
+  
 
 ## for local testing
 # hetpath<- "/media/btjeng/Elements/ParaMask/ParaMask_bastiaan/SeDuS5_0.2_reps/Simulations_0.2_SV_SC_rep3_mat_cpos.vcf.het.stat.txt"
@@ -566,6 +570,9 @@ if(useRRD){
   het$EM_class[het$EM_class==1 & (het$Het.allele.deviation > q1 | het$Het.allele.deviation < q2) ] <- 2
 }
 
+
+
+write.table(x = het,file =paste(outpath, ID,".EMresults.het", sep = ""), quote = FALSE, sep = "\t", col.names = TRUE, row.names = FALSE)
 ############### distance part
 if(verbose){
   print("calculate distance cutoff.....")
@@ -714,5 +721,5 @@ print(paste("distance cutoff: ", dist_cutoff, sep = ""))
 if(verbose){
   print("writing results.....")
 }
-write.table(x = het,file =paste(outpath, ID,"EMresults.het", sep = ""), quote = FALSE, sep = "\t", col.names = TRUE, row.names = FALSE)
+
 write.table(x = dist_cutoff,file =paste(outpath, ID,"EMresults.dist", sep = ""), quote = FALSE, sep = "\t", col.names = TRUE, row.names = FALSE)

@@ -49,7 +49,7 @@ In the final step, SNPs are clustered into multicopy haplotypes, and a comprehen
 - byte code generated for java version   1.8 using gradle
 - You can compile bytecode from source located in the ParaMask/src folder
 
-## Details 
+## Scripts 
 
 ### 1. PrepareVCF_fromVCF
 - ```bash

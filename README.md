@@ -3,7 +3,7 @@
 
 ParaMask encompasses three main steps:
 
-### 1. PrepareParaMask_fromVCF
+### 1. PrepareParaMaskInput_fromVCF
 In this initial phase, a VCF (Variant Call Format) file undergoes processing to yield three ParaMaskInput files:
 
 - **.het** Contains essential data for the Expectation Maximization algorithm and Read Ratio Deviations.

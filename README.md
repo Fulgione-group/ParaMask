@@ -116,7 +116,7 @@ Example:
 |**Required**|
 | **--het/-h**      | Input full path to het file |
 |**Optional**|
-| **--out/-o**      | Input full path to the output directory |
+| **--outdir/-o**      | Input full path to the output directory |
 | **--missingness/-m**  | Input float, default = 0: no missing sites allowed |
 | **--verbose/-v**      | Verbose shows current steps of ParaMask, fitting process of VGAM, default is false |
 | **--ID $RUN_ID**      | Input ID for file naming |

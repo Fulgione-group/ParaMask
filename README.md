@@ -75,7 +75,6 @@ Required:
 | Option                | Description |
 |-----------------------|-------------|
 | **--hetfile/-h**      | Input path to het file |
-
 |Optional:|
 | Option                | Description |
 |-----------------------|-------------|

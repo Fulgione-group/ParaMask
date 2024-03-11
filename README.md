@@ -85,7 +85,7 @@ In the final step, SNPs are clustered into multicopy haplotypes, and a comprehen
 | **--hetfile/-h**      | Input path to het file |
 |**Optional**|
 | **--outpath/-o**      | Input path to the output directory |
-| **--missingness/-m**  | Input float, default = 0.1: no missing sites allowed |
+| **--missingness/-m**  | Input float, default = 0: no missing sites allowed |
 | **--verbose/-v**      | Verbose shows current steps of ParaMask, fitting process of VGAM, default is false |
 | **--ID $RUN_ID**      | Input ID for file naming |
 | **--chrom/-c**        | Input chromosome to only use a specific chromosome. Default: all chromosomes |

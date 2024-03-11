@@ -74,8 +74,10 @@ Option                  Description
 ----------------------  ----------------------------------------------
 
 Required parameters:
-  **--hetfile/-h** Input path to het file
-  
+   
+| Option                | Description |
+|-----------------------|-------------|
+| **--hetfile/-h**      | Input path to het file |
 
 Optional parameters:
 | Option                | Description |

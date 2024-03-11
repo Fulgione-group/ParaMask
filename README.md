@@ -133,6 +133,8 @@ Columns:
 
 
 ### .finalClass.bed
+
+Columns:
 1. Chromosome
 2. Start of genomic region
 3. End of the genomic region

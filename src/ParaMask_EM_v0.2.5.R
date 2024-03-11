@@ -572,7 +572,7 @@ if(useRRD){
 
 
 
-write.table(x = het,file =paste(outpath, ID,".EMresults.het", sep = ""), quote = FALSE, sep = "\t", col.names = TRUE, row.names = FALSE)
+write.table(x = het,file =paste(outpath, ID,"_EMresults.het", sep = ""), quote = FALSE, sep = "\t", col.names = TRUE, row.names = FALSE)
 ############### distance part
 if(verbose){
   print("calculate distance cutoff.....")
@@ -722,4 +722,4 @@ if(verbose){
   print("writing results.....")
 }
 
-write.table(x = dist_cutoff,file =paste(outpath, ID,"EMresults.dist", sep = ""), quote = FALSE, sep = "\t", col.names = TRUE, row.names = FALSE)
+write.table(x = dist_cutoff,file =paste(outpath, ID,"_EMresults.dist", sep = ""), quote = FALSE, sep = "\t", col.names = TRUE, row.names = FALSE)

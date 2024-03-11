@@ -1,4 +1,6 @@
 #!/bin/bash
-export OPENBLAS_NUM_THREADS=40 OMP_NUM_THREADS=40 MKL_NUM_THREADS=40
-Rscript --vanilla ~/PATH_TO_PARAMASK_SRC/ParaMask_EM_v2.4.R "--hetfile" PATH_TO_HET_FILE \
-"--outpath" PATH_TO_OUTPUTDIR "--missingness" MISSINGNESS "--verbose" "--ID" RUN_ID
+Rscript --vanilla $PATH_TO_INSTALLATION_FOLDER/ParaMask/ParaMask_EM_v0.2.5.R\
+      	--het $PATH_TO_INSTALLATION_FOLDER/Example_files/Input/Simulations_10PercentDuplications.vcf.het.stat.txt\
+        --missingness 0.1\
+	--outdir $PATH_TO_INSTALLATION_FOLDER/Example_files/Output\
+	--ID test

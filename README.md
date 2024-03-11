@@ -61,6 +61,8 @@ Example:
         --missingness 0.1\
         --popfile $PATH_TO_POPFILE
 ```
+
+
 | Option                          | Description                                                |
 |---------------------------------|------------------------------------------------------------|
 |**Required**|
@@ -81,7 +83,7 @@ Example:
         --hetfile $PATH_TO_HET_FILE\
         --missingness 0.1    
 ```
-
+<br>
    
 | Option                | Description |
 |-----------------------|-------------|

@@ -130,7 +130,7 @@ Example:
 
 ### .finalClass.bed
 
-**For most users probably the most important output file**
+**For most users probably the most important output file** <br>
 1-based bed bed file containing genomic regions and copy number status (single / multicopy), number of SNPs and Cluster Number.
 
 Columns:

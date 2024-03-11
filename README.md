@@ -55,12 +55,20 @@ In the final step, SNPs are clustered into multicopy haplotypes, and a comprehen
 - ```bash
   #!/bin/bash
   java -jar $PATH_TO_INSTALLATION_FOLDER/ParaMask/PrepareParaMaskInput_fromVCF.jar\
-        --vcf/-v $INPUT_VCF #Input VCF
-  # Optional parameters
-        --missingness/-m $MAX_MISSINGNESS_PROPORTION  #float, default = 0: no missing sites allowed
-        --popfile/-p $PATH_TO_POPFILE #Full path to popfile, a list of samples in each row, default all samples in the VCF
-        --out/-o $PATH_TO OUTPUT #full path to the Output file, dafault is the input file. Extensions for the different files are added automatically
-        --noVaryingFormat/nVF #NOT RECOMMENDED sets Varying genotype format of the VCF to false, default true.
+        --vcf $INPUT_VCF\
+        --missingness 0.1\
+        --popfile $PATH_TO_POPFILE
+  ```
+| Option                          | Description                                                |
+|---------------------------------|------------------------------------------------------------|
+|**Required**|
+| **--vcf/-v**                    | Input VCF                                      |
+|**Optional**|
+| **--missingness/-m**            | Maximum proportion of missing genotypes per site. Default = 0: no missing sites allowed |
+| **--popfile/-p**                | Full path to popfile, a list of samples in each row. Default NULL, all samples in the VCF |
+| **--out/-o**                    | Full path to the Output file, default is the input file. Extensions for the different files are added automatically |
+| **--noVaryingFormat/nVF**       | NOT RECOMMENDED, sets Varying genotype format of the VCF to false. Default true |
+
 
 ### 2. ParaMask_EM
 - ```bash

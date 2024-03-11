@@ -133,8 +133,14 @@ Columns:
 
 
 ### .finalClass.bed
+1. Chromosome
+2. Start of genomic region
+3. End of the genomic region
+4. Region status: 0 = single-copy; 1 = multicopy
+5. Number of SNPs
+6. Cluster Number
 
-| Chromosome | Start | End   | Type (0: single-copy; 1: multi-copy) | nSNPs | Cluster |
+| Chromosome | Start | End   | Type:0-single-copy; 1-multi-copy) | nSNPs | Cluster |
 |------------|-------|-------|----------------------------------------|------|---------|
 | chr1       | 1     | 10473 | 0                                      | 63   | 0       |
 | chr1       | 10474 | 11145 | 1                                      | 12   | 1       |

@@ -105,7 +105,7 @@ Example:
 Example:
 ```bash
   #!/bin/bash
-  Rscript --vanilla $PATH_TO_INSTALLATION_FOLDER/ParaMask/ParaMask_EM_v2.4.R\
+  Rscript --vanilla $PATH_TO_INSTALLATION_FOLDER/ParaMask/ParaMask_EM_v0.2.5.R\
         --hetfile $PATH_TO_HET_FILE\
         --missingness 0.1    
 ```

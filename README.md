@@ -104,10 +104,12 @@ java -jar $PATH_TO_INSTALLATION_FOLDER/ParaMask/PrepareParaMaskInput_fromVCF.jar
 
 Example:
 ```bash
-  #!/bin/bash
-  Rscript --vanilla $PATH_TO_INSTALLATION_FOLDER/ParaMask/ParaMask_EM_v0.2.5.R\
-        --hetfile $PATH_TO_HET_FILE\
-        --missingness 0.1    
+#!/bin/bash
+Rscript --vanilla $PATH_TO_INSTALLATION_FOLDER/ParaMask/ParaMask_EM_v0.2.5.R\
+        --het $PATH_TO_INSTALLATION_FOLDER/Example_files/Input/Simulations_10PercentDuplications.vcf.het.stat.txt\
+        --missingness 0.1\
+        --outdir $PATH_TO_INSTALLATION_FOLDER/Example_files/Output\
+        --ID test  
 ```
 <br>
    
@@ -134,12 +136,13 @@ Example:
 
 Example:
 ```bash
-   #!/bin/bash
-   java -jar $PATH_TO_INSTALLATION_FOLDER/ParaMask/ParaMask_Cluster_Seeds.jar\
-        --cov $PATH_TO_COVSTAT_FILE\
-        --het $PATH_TO_HET_FILE\
-        --covgw $PATH_TO_COVGW_FILE\
-        --cutoff $INTEGER\
+
+#!/bin/bash
+java -jar $PATH_TO_INSTALLATION_FOLDER/ParaMask/ParaMask_Cluster_Seeds.jar\
+        --cov $PATH_TO_INSTALLATION_FOLDER/Example_files/Input/Simulations_10PercentDuplications.vcf.cov.stat.txt\
+        --het $PATH_TO_INSTALLATION_FOLDER/Example_files/Output/test_EMresults.het\
+        --covgw  $PATH_TO_INSTALLATION_FOLDER/Example_files/Input/Simulations_10PercentDuplications.vcf.cov.gw.txt\
+        --cutoff  $(tail -1 $PATH_TO_INSTALLATION_FOLDER/Example_files/Output/test_EMresults.dist)\
         --range 1,1000000
 ```
 

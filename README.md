@@ -52,13 +52,15 @@ In the final step, SNPs are clustered into multicopy haplotypes, and a comprehen
 ## Usage 
 
 ### 1. PrepareVCF_fromVCF
-- ```bash
+
+Example:
+```bash
   #!/bin/bash
   java -jar $PATH_TO_INSTALLATION_FOLDER/ParaMask/PrepareParaMaskInput_fromVCF.jar\
         --vcf $INPUT_VCF\
         --missingness 0.1\
         --popfile $PATH_TO_POPFILE
-  ```
+```
 | Option                          | Description                                                |
 |---------------------------------|------------------------------------------------------------|
 |**Required**|
@@ -71,12 +73,14 @@ In the final step, SNPs are clustered into multicopy haplotypes, and a comprehen
 
 
 ### 2. ParaMask_EM
-- ```bash
+
+Example:
+```bash
   #!/bin/bash
   Rscript --vanilla $PATH_TO_INSTALLATION_FOLDER/ParaMask/ParaMask_EM_v2.4.R\
         --hetfile $PATH_TO_HET_FILE\
         --missingness 0.1    
-  ```
+```
 
    
 | Option                | Description |
@@ -99,15 +103,25 @@ In the final step, SNPs are clustered into multicopy haplotypes, and a comprehen
 
 
 ### 3. ParaMask_Cluster_Seeds
-- ```bash
+```bash
    #!/bin/bash
    java -jar $PATH_TO_INSTALLATION_FOLDER/ParaMask/ParaMask_Cluster_Seeds.jar\
-        --cov PATH_TO_COV_FILE/-c $PATH_TO_COVSTAT_FILE #
-        --het PATH_TO_HET_FILE/-h $PATH_TO_HET_FILE
-        --covgw PATH_TO_COVGW_FILE/-cg $PATH_TO_COVGW_FILE
-        --cutoff/-cd $INTEGER #distance cutoff
-        --range $INTEGER,INTEGER #CHR_START,CHR_END
-        --purge $INTEGER #Clusters with number of SNPs <=INTEGER are purged, default = 1.
+        --cov $PATH_TO_COVSTAT_FILE\
+        --het $PATH_TO_HET_FILE\
+        --covgw $PATH_TO_COVGW_FILE\
+        --cutoff $INTEGER\
+        --range 1,1000000
+```
+| Option                                  | Description                                                  |
+|-----------------------------------------|--------------------------------------------------------------|
+| **Required**|
+| **--cov/-c**           | Full path to coverage file per sample and per site |
+| **--het/-h**           | Full path to het file generated in step 2. |
+| **--covgw/-cg**      | Full path to genome-wide coverage of non-missing sites per individual |
+| **--cutoff/-cd**                        | Integer distance cutoff                                     |
+| **--range**                             | Integer,Integer CHR_START,CHR_END                           |
+|**Optional**|
+| **--purge**                             | Number of SNPs per Clusters such that  <= are purged. Default = 1 |
 
 
 ## Output files

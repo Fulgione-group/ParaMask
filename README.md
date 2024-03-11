@@ -121,7 +121,7 @@ Columns:
 4. Classification after EM step: 0 = single-copy; 1 = uncertain; 2 = multicopy-Seed
 5. Reason for multicopy SNP classification: seed = Seed SNP; hetcov = single-copy SNP in multicopy region classified by coverage (at current position) of heterozygote genotypes at the last Seed; bridge = uncertain SNP with no excess of coverage, but in between 2 SNPs with multicopy signals
 6. Coverage (at current position) of heterozygote genotypes at the last Seed
-7. Heterozygote genotypes at the last Seed: Colon seperated list.
+7. Heterozygote genotypes at the last Seed: Colon seperated list. Can be used to extract genotype specific Clusters
 
 | Chromosome | Position | Cluster | EmClass | ClusterCause | CovHetOfLastSeed | CovGWHetOfLastSeed | HetGenOfLastSeed                                               |
 |------------|----------|---------|---------|--------------|------------------|---------------------|---------------------------------------------------------------|

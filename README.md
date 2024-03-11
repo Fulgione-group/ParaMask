@@ -114,18 +114,18 @@ Example:
 | Option                | Description |
 |-----------------------|-------------|
 |**Required**|
-| **--hetfile/-h**      | Input path to het file |
+| **--hetfile/-h**      | Input full path to het file |
 |**Optional**|
-| **--outpath/-o**      | Input path to the output directory |
+| **--outpath/-o**      | Input full path to the output directory |
 | **--missingness/-m**  | Input float, default = 0: no missing sites allowed |
 | **--verbose/-v**      | Verbose shows current steps of ParaMask, fitting process of VGAM, default is false |
 | **--ID $RUN_ID**      | Input ID for file naming |
-| **--chrom/-c**        | Input chromosome to only use a specific chromosome. Default: all chromosomes |
+| **--chrom/-c**        | Input chromosome name to only use a specific chromosome. Default: all chromosomes |
 | **--noRRD**           | Do not use RRD to classify uncertain. Default: True |
 | **--tolerance/-t**    | Input tolerance for parameters estimated by the EM algorithm on heterozygote frequency, default: 0.001 |
-| **--startline/-s**    | Iput starting line of the het file, default=2 |
-| **--endline/-e**      | Iput ending line of the het file, default last line|
-| **--boundary/-b**     | Input constrains to upper Parameter space of the MAF*(Z=="K") variable, helps with EM convergence in extreme cases |
+| **--startline/-s**    | Integer: Starting line of the het file. Default=2 |
+| **--endline/-e**      | Integer: Eending line of the het file. Default last line|
+| **--boundary/-b**     | Integer: constrains to upper Parameter space of the MAF*(Z=="K") variable, helps with EM convergence in extreme cases |
 
 
 <br>

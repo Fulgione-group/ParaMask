@@ -73,9 +73,9 @@ In the final step, SNPs are clustered into multicopy haplotypes, and a comprehen
    
 | Option                | Description |
 |-----------------------|-------------|
-|Required|
+|**Required**|
 | **--hetfile/-h**      | Input path to het file |
-|Optional|
+|**Optional**|
 | **--outpath/-o**      | Input path to the output directory |
 | **--missingness/-m**  | Input float, default = 0.1: no missing sites allowed |
 | **--verbose/-v**      | Verbose shows current steps of ParaMask, fitting process of VGAM, default is false |

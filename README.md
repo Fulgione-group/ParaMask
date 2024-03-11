@@ -132,7 +132,15 @@ Columns:
 | chr1       | 10641    | 1       | 2       | seed         | 19.525           | 12.643446          | genotype_5:genotype_15:genotype_68:genotype_78:genotype_93       |
 
 
-### .cov.gw.txt
+### .finalClass.bed
+
+| Chromosome | Start | End   | Type (0: single-copy; 1: multi-copy) | nSNPs | Cluster |
+|------------|-------|-------|----------------------------------------|------|---------|
+| chr1       | 1     | 10473 | 0                                      | 63   | 0       |
+| chr1       | 10474 | 11145 | 1                                      | 12   | 1       |
+| chr1       | 11146 | 19264 | 0                                      | 45   | 0       |
+| chr1       | 19265 | 22208 | 1                                      | 51   | 2       |
+| chr1       | 22209 | 36211 | 0                                      | 80   | 0       |
 
 
 ## Example files

@@ -128,11 +128,9 @@ Example:
 | **--boundary/-b**     | Input constrains to upper Parameter space of the MAF*(Z=="K") variable, helps with EM convergence in extreme cases |
 
 
-
+<br>
 
 ### 3. ParaMask_Cluster_Seeds
-
-<br>
 
 Example:
 ```bash

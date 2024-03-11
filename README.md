@@ -18,8 +18,12 @@ This stage harnesses population genomic signatures of multicopies for seed SNP g
 Creates two intermediate Output files
 
 - **.EMresults.het** An updated het file with het with stats on EM classification
-  **.dist** File containing the distance cutoff
-Automated plotting generates visualization. 
+- **.dist** File containing the distance cutoff
+
+Automated plotting generates visualization:
+
+
+
 ### 3. ParaMask_Cluster_Seeds
 In the final step, SNPs are clustered into multicopy haplotypes, and a comprehensive SNP annotation is provided. This phase yields three output files:
 

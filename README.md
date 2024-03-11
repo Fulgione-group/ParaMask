@@ -15,6 +15,11 @@ This stage harnesses population genomic signatures of multicopies for seed SNP g
 - **RRD testing:** Utilizes the mean and variance from the read ratio deviation of single-copy classified SNPs to construct a normal confidence interval, validating previously uncertain classified SNPs.
 - **EM algorithm for distance dissection:** Pinpoints distances between seed SNPs within and between multicopy regions. It calculates mean parameters using a mixture of geometric distributions. The cutoff distance is established where the two geometrics have identical density. For increased stability, this process defaults to 1000 repetitions, with the median cutoff selected.
 
+Creates two intermediate Output files
+
+- **.EMresults.het** An updated het file with het with stats on EM classification
+  **.dist** File containing the distance cutoff
+Automated plotting generates visualization. 
 ### 3. ParaMask_Cluster_Seeds
 In the final step, SNPs are clustered into multicopy haplotypes, and a comprehensive SNP annotation is provided. This phase yields three output files:
 

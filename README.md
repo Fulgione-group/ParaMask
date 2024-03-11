@@ -119,6 +119,8 @@ Example:
 
 
 ### 3. ParaMask_Cluster_Seeds
+
+Example:
 ```bash
    #!/bin/bash
    java -jar $PATH_TO_INSTALLATION_FOLDER/ParaMask/ParaMask_Cluster_Seeds.jar\

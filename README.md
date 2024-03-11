@@ -80,11 +80,11 @@ In the final step, SNPs are clustered into multicopy haplotypes, and a comprehen
 
 Example:
 ```bash
-  #!/bin/bash
-  java -jar $PATH_TO_INSTALLATION_FOLDER/ParaMask/PrepareParaMaskInput_fromVCF.jar\
-        --vcf $INPUT_VCF\
-        --missingness 0.1\
-        --popfile $PATH_TO_POPFILE
+#!/bin/bash
+java -jar $PATH_TO_INSTALLATION_FOLDER/ParaMask/PrepareParaMaskInput_fromVCF.jar\
+        --vcf $PATH_TO_INSTALLATION_FOLDER/Example_files/Input/Simulations_10PercentDuplications.vcf\
+        --missingness 0.1
+
 ```
 <br>
 

@@ -259,12 +259,12 @@ Columns:
 
 ParaMask outputs diagnostic plots in pdf format
 
-1. **iterationN.odf**
-  - diagnostic plots of posterioir weights of the EM after the Nth iteration
+1. **iterationN.pdf**
+- diagnostic plots of posterioir weights of the EM after the Nth iteration
 2. **LLR.pdf**
-  - Plot of the Log-Likelihood-Ratio
+- Plot of the Log-Likelihood-Ratio
 3. **AR.pdf** and **RRD.pdf**
-  - Plots of Allelic Ratios and Read Ratio deviations (and densities) grouped by EM classfication (single-copy, multicopy, uncertain)
+- Plots of Allelic Ratios and Read Ratio deviations (and densities) grouped by EM classfication (single-copy, multicopy, uncertain)
 
 <br>
 <br>

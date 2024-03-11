@@ -13,7 +13,7 @@ In this initial phase, a VCF (Variant Call Format) file undergoes processing to 
 <br>
 
 ### 2. ParaMask_EM
-This stage harnesses population genomic signatures of multicopies for seed SNP generation, employing the following procedures:
+This stage harnesses population genomic signatures of multicopy regions for seed SNP generation, employing the following procedures:
 
 - **EM algorithm:** Simultaneously fits two Beta-binomial regressions on heterozygote frequency as a function of the Minor Allele frequencies. One regression pertains to single-copy regions, while the other addresses multicopy regions. Classification hinges on the Log-Likelihood Ratio (LLR).
 - **RRD testing:** Utilizes the mean and variance from the read ratio deviation of single-copy classified SNPs to construct a normal confidence interval, validating previously uncertain classified SNPs.

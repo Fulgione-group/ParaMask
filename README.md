@@ -67,7 +67,7 @@ In the final step, SNPs are clustered into multicopy haplotypes, and a comprehen
 | **--missingness/-m**            | Maximum proportion of missing genotypes per site. Default = 0: no missing sites allowed |
 | **--popfile/-p**                | Full path to popfile, a list of samples in each row. Default NULL, all samples in the VCF |
 | **--out/-o**                    | Full path to the Output file, default is the input file. Extensions for the different files are added automatically |
-| **--noVaryingFormat/nVF**       | NOT RECOMMENDED, sets Varying genotype format of the VCF to false. Default true |
+| **--noVaryingFormat/-nVF**       | NOT RECOMMENDED, sets Varying genotype format of the VCF to false. Default true |
 
 
 ### 2. ParaMask_EM

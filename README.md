@@ -94,6 +94,28 @@ In the final step, SNPs are clustered into multicopy haplotypes, and a comprehen
 
 ## Output files
 
+### .finalClass.bed
+
+**For most users probably the most important output file**
+1-based bed bed file containing genomic regions and copy number status (single / multicopy), number of SNPs and Cluster Number.
+
+Columns:
+1. Chromosome
+2. Start of genomic region
+3. End of the genomic region
+4. Region status: 0 = single-copy; 1 = multicopy
+5. Number of SNPs
+6. Cluster Number
+
+| Chromosome | Start | End   | Type:0-single-copy; 1-multi-copy) | nSNPs | Cluster |
+|------------|-------|-------|----------------------------------------|------|---------|
+| chr1       | 1     | 10473 | 0                                      | 63   | 0       |
+| chr1       | 10474 | 11145 | 1                                      | 12   | 1       |
+| chr1       | 11146 | 19264 | 0                                      | 45   | 0       |
+| chr1       | 19265 | 22208 | 1                                      | 51   | 2       |
+| chr1       | 22209 | 36211 | 0                                      | 80   | 0       |
+
+
 ### .finalClass.het
 
 This file contains all per SNP statistics and results used for classification
@@ -153,27 +175,6 @@ Columns:
 | chr1       | 10593    | 1       | 1       | hetcov       | 19.7125          | 12.643446          | genotype_2:genotype_3:genotype_4:genotype_5:genotype_6:genotype_7:genotype_8:genotype_9:genotype_10:genotype_11:genotype_13:genotype_14:genotype_15:genotype_16:genotype_17:genotype_18:genotype_19:genotype_20:genotype_22:genotype_23:genotype_24:genotype_25:genotype_28:genotype_30:genotype_31:genotype_32:genotype_33:genotype_35:genotype_37:genotype_38:genotype_39:genotype_40:genotype_42:genotype_43:genotype_44:genotype_48:genotype_49:genotype_50:genotype_51:genotype_52:genotype_53:genotype_54:genotype_55:genotype_56:genotype_57:genotype_58:genotype_59:genotype_60:genotype_61:genotype_63:genotype_64:genotype_65:genotype_68:genotype_69:genotype_70:genotype_71:genotype_73:genotype_74:genotype_75:genotype_76:genotype_77:genotype_78:genotype_79:genotype_80:genotype_81:genotype_82:genotype_83:genotype_84:genotype_86:genotype_87:genotype_88:genotype_89:genotype_92:genotype_93:genotype_94:genotype_95:genotype_96:genotype_97:genotype_98:genotype_99 |
 | chr1       | 10641    | 1       | 2       | seed         | 19.525           | 12.643446          | genotype_5:genotype_15:genotype_68:genotype_78:genotype_93       |
 
-
-### .finalClass.bed
-
-**For most users probably the most important output file**
-1-based bed bed file containing genomic regions and copy number status (single / multicopy), number of SNPs and Cluster Number.
-
-Columns:
-1. Chromosome
-2. Start of genomic region
-3. End of the genomic region
-4. Region status: 0 = single-copy; 1 = multicopy
-5. Number of SNPs
-6. Cluster Number
-
-| Chromosome | Start | End   | Type:0-single-copy; 1-multi-copy) | nSNPs | Cluster |
-|------------|-------|-------|----------------------------------------|------|---------|
-| chr1       | 1     | 10473 | 0                                      | 63   | 0       |
-| chr1       | 10474 | 11145 | 1                                      | 12   | 1       |
-| chr1       | 11146 | 19264 | 0                                      | 45   | 0       |
-| chr1       | 19265 | 22208 | 1                                      | 51   | 2       |
-| chr1       | 22209 | 36211 | 0                                      | 80   | 0       |
 
 
 ## Example files

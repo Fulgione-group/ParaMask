@@ -30,7 +30,7 @@ Automated plotting generates visualization:
 <br>
 
 ### 3. ParaMask_Cluster_Seeds
-In the final step, SNPs are clustered into multicopy haplotypes, and a comprehensive SNP annotation is provided. This phase yields three output files:
+In the final step, SNPs are clustered into multicopy haplotypes, and a comprehensive SNP annotation is provided. If multiple chromosomes are present, needs to be run seperately. This phase yields three output files:
 
 - **.finalClass.het** file The original Het file with the definitive status.
 - **.clusters.txt** Cluster file outlining each multicopy SNP along with its annotation.

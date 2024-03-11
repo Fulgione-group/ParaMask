@@ -98,6 +98,7 @@ Example:
 | **--out/-o**                    | Full path to the Output file, default is the input file. Extensions for the different files are added automatically |
 | **--noVaryingFormat/-nVF**       | NOT RECOMMENDED, sets Varying genotype format of the VCF to false. Default true |
 
+<br>
 
 ### 2. ParaMask_EM
 

@@ -101,7 +101,11 @@ Option                  Description
 import panel as pn
 from bokeh.resources import INLINE
 
-SimpleTable = pn.panel("""
+<style>
+td, th {
+   border: none!important;
+}
+</style>
 |     Time    | Number of Trial with Results | Unique Units |
 |:-----------:|:----------------------------:|:------------:|
 | 20 Apr 2018 |            30,763            |    21,094    |
@@ -109,7 +113,6 @@ SimpleTable = pn.panel("""
 | 12 Apr 2019 |            35,926            |    24,548    |
 |             |                              |              |
 
-""")
 
 SimpleTable.save('SimpleTable', resources=INLINE) 
 ### 3. ParaMask_Cluster_Seeds

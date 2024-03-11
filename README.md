@@ -79,6 +79,8 @@ In the final step, SNPs are clustered into multicopy haplotypes, and a comprehen
 
 ### .finalClass.het
 
+This file contains all per SNP statistics and results used for classification
+
 Columns:
 1. Chromosome
 2. Position
@@ -114,6 +116,9 @@ Columns:
 
 
 ### .clusters.txt
+
+This files contains additional per multicopy SNP statistics, with details on why they classified and which genotypes are involved.
+
 Columns:
 1. Chromosome
 2. Position
@@ -133,6 +138,9 @@ Columns:
 
 
 ### .finalClass.bed
+
+**For most users probably the most important output file**
+1-based bed bed file containing genomic regions and copy number status (single / multicopy), number of SNPs and Cluster Number.
 
 Columns:
 1. Chromosome

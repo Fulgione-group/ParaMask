@@ -70,9 +70,6 @@ In the final step, SNPs are clustered into multicopy haplotypes, and a comprehen
         --missingness 0.1    
   ```
 
-Option                  Description
-----------------------  ----------------------------------------------
-
 Required parameters:
    
 | Option                | Description |

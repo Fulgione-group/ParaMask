@@ -29,11 +29,11 @@ This step automatically generates plots for visualization (see diagnostic plots 
 <br>
 
 ### 3. ParaMask_Cluster_Seeds
-In the final step, SNPs are clustered into multicopy haplotypes, and a comprehensive SNP annotation is provided. If multiple chromosomes are present, needs to be run seperately. This phase yields three output files:
+In the final step, SNPs are clustered into multicopy haplotypes, and SNPs are classified into single- and multicopy SNPs. If multiple chromosomes are present, this step needs to be run seperately on them. This step outputs the following files:
 
-- **.finalClass.het** file The original Het file with the definitive status.
+- **.finalClass.het** The original Het file with the final classification of SNPs.
 - **.clusters.txt** Cluster file outlining each multicopy SNP along with its annotation.
-- **.finalClass.bed** Bed file distinguishing single- and multicopy regions.
+- **.finalClass.bed** Bed file with single- and multicopy regions.
 
 <br>
 <br>
@@ -54,7 +54,6 @@ In the final step, SNPs are clustered into multicopy haplotypes, and a comprehen
 
 <br>
 
-**tested on**
 #### R
 - R version 4.0.4
 - VGAM version 1.1.8
@@ -62,8 +61,7 @@ In the final step, SNPs are clustered into multicopy haplotypes, and a comprehen
 - patchwork 1.1.2
 
 #### Java
-- byte code generated for java version   1.8 using gradle
-- You can compile bytecode from source located in the ParaMask/src folder
+- java version 1.8 
 
 <br>
 <br>
@@ -95,8 +93,8 @@ java -jar $PATH_TO_INSTALLATION_FOLDER/ParaMask/PrepareParaMaskInput_fromVCF.jar
 |**Optional**|
 | **--missingness/-m**            | Maximum proportion of missing genotypes per site. Default = 0: no missing sites allowed |
 | **--popfile/-p**                | Full path to popfile, a list of samples in each row. Default NULL, all samples in the VCF |
-| **--out/-o**                    | Full path to the Output file, default is the input file. Extensions for the different files are added automatically |
-| **--noVaryingFormat/-nVF**       | NOT RECOMMENDED, sets Varying genotype format of the VCF to false. Default true |
+| **--out/-o**                    | Full path to the output file, default is the input file. Extensions for the different files are added automatically |
+
 
 <br>
 
@@ -123,11 +121,11 @@ Rscript --vanilla $PATH_TO_INSTALLATION_FOLDER/ParaMask/ParaMask_EM_v0.2.5.R\
 | **--verbose/-v**      | Verbose shows current steps of ParaMask, fitting process of VGAM, default is false |
 | **--ID**      | Input ID for file naming |
 | **--chrom/-c**        | Input chromosome name to only use a specific chromosome. Default: all chromosomes |
-| **--noRRD**           | Do not use RRD to classify uncertain. Default: True |
+| **--noRRD**           | Do not use read ratio deviations. Default: True |
 | **--tolerance/-t**    | Input tolerance for parameters estimated by the EM algorithm on heterozygote frequency, default: 0.001 |
 | **--startline/-s**    | Integer: Starting line of the het file. Default=2 |
-| **--endline/-e**      | Integer: Eending line of the het file. Default last line|
-| **--boundary/-b**     | Integer: constrains to upper Parameter space of the MAF*(Z=="K") variable, helps with EM convergence in extreme cases |
+| **--endline/-e**      | Integer: Ending line of the het file. Default last line|
+| **--boundary/-b**     | **NOT RECOMMENDED** Float: constrain to the upper limit of the MAF*(Z=="K") parameter. This can help with EM convergence in cases where SNPs are clustered in a small range of maf |
 
 
 <br>
@@ -152,12 +150,12 @@ java -jar $PATH_TO_INSTALLATION_FOLDER/ParaMask/ParaMask_Cluster_Seeds.jar\
 |-----------------------------------------|--------------------------------------------------------------|
 | **Required**|
 | **--cov/-c**           | Full path to coverage file per sample and per site |
-| **--het/-h**           | Full path to het file generated in step 2. |
+| **--het/-h**           | Full path to het file generated in step 2 |
 | **--covgw/-cg**      | Full path to genome-wide coverage of non-missing sites per individual |
-| **--cutoff/-cd**                        | Integer distance cutoff                                     |
-| **--range**                             | Integer,Integer CHR_START,CHR_END                           |
+| **--cutoff/-cd**                        | Integer: Distance cutoff                                     |
+| **--range**                             | Integer,Integer: CHR_START,CHR_END                           |
 |**Optional**|
-| **--purge**                             | Number of SNPs per Clusters such that  <= are purged. Default = 1 |
+| **--purge**                             | Integer: Multicopy regions with at most this specified number of SNPs are purged. Default = 1 |
 
 <br>
 <br>
@@ -174,7 +172,7 @@ java -jar $PATH_TO_INSTALLATION_FOLDER/ParaMask/ParaMask_Cluster_Seeds.jar\
 ### .finalClass.bed
 
 **For most users probably the most important output file** <br>
-1-based bed bed file containing genomic regions and copy number status (single / multicopy), number of SNPs and Cluster Number.
+1-based bed file containing genomic regions and copy number status (single- / multicopy), number of SNPs and cluster number.
 
 Columns:
 1. Chromosome
@@ -197,7 +195,7 @@ Columns:
 ### .finalClass.het
 
 
-This file contains all per SNP statistics and results used for classification
+This file contains all statistics per SNPs and the results used for classification
 
 Columns:
 1. Chromosome
@@ -211,14 +209,14 @@ Columns:
 9. Mean coverage across homozygous genotypes
 10. Mean coverage across heterozygote genotypes
 11. Reference allele depth of all heterozygote genotypes
-12. Alternative allele depth
+12. Alternative allele depth of all heterozygote genotypes
 13. Allelic ratio (11/12)
 14. Read ratio deviation (RRD, based on 13)
 15. Likelihood of SNP beeing single-copy
 16. Likelihood of SNP beeing multicopy
-17. Likelihood ratio
+17. Log-Likelihood-Ratio
 18. Classification after EM step: 0 = single-copy; 1 = uncertain; 2 = multicopy-Seed
-19. Seed because of allelic ratio deviation: 0 = no Seed/ Seed based on EM; 1 = Seed because of RRD (EM classified uncertain before)
+19. Reason why a SNP is classified as seed: 0 = no Seed/ Seed based on EM; 1 = Seed because of RRD (EM classified uncertain before)
 20. Final status: 0= single copy; 1 = muliticopy
 21. cluster Number: 0 = no cluster (single copy); 1...N = multicopy
 
@@ -237,7 +235,7 @@ Columns:
 
 
 
-This files contains additional per multicopy SNP statistics, with details on why they classified and which genotypes are involved.
+This files contains additional statistics per multicopy SNPs, with details on why they were classified as multicopy and which genotypes are involved.
 
 Columns:
 1. Chromosome
@@ -267,9 +265,9 @@ ParaMask outputs diagnostic plots in pdf format
 2. **LLR.pdf**
   * Plot of the Log-Likelihood-Ratio
 3. **AR.pdf** and **RRD.pdf**
-  * Plots of Allelic Ratios and Read Ratio deviations (and densities) grouped by EM classfication (single-copy, multicopy, uncertain)
+  * Plots of allelic ratios and read ratio deviations (and densities) grouped by EM classfication (single-copy, multicopy, uncertain)
 4. **dist.pdf**
-  * Diagnostice distance plot
+  * Distance plot
 <br>
 <br>
 <br>
@@ -279,7 +277,7 @@ ParaMask outputs diagnostic plots in pdf format
 
 ## Example files
 
-Can be reproduced by running example scripts above, also located the scripts folder
+Can be reproduced by running example scripts above, also located in the scripts folder
 
 Folders:
 1. **Input** 

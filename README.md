@@ -1,10 +1,11 @@
 ## Overview
 <br>
 
-ParaMask encompasses three main steps:
+ParaMask is a method to identify multicopy regions in population-level whole genome data, including tandem or segmental duplications, copy number variants, gene families with various paralog copies, transposable elements, and other repeats. 
+To run ParaMask, we first prepare input files from a vcf (script 1), then we run a first classification of SNPs based on excess heterozygosity and read ratio deviations (script 2), then we cluster collapsed SNPs in multicopy haplotypes (script 3).
 
 ### 1. PrepareParaMaskInput_fromVCF
-In this initial phase, a VCF (Variant Call Format) file undergoes processing to yield three ParaMaskInput files:
+First, we process a VCF (Variant Call Format) file and output three ParaMaskInput files:
 
 - **.het** Contains essential data for the Expectation Maximization algorithm and Read Ratio Deviations.
 - **.cov.stat.txt** Encodes coverage per sample and per site.
@@ -13,18 +14,16 @@ In this initial phase, a VCF (Variant Call Format) file undergoes processing to 
 <br>
 
 ### 2. ParaMask_EM
-This stage harnesses population genomic signatures of multicopy regions for seed SNP generation, employing the following procedures:
+This step produces a first classification of SNPs in single-copy and multicopy regions, employing the following procedures:
 
-- **EM algorithm:** Simultaneously fits two Beta-binomial regressions on heterozygote frequency as a function of the Minor Allele frequencies. One regression pertains to single-copy regions, while the other addresses multicopy regions. Classification hinges on the Log-Likelihood Ratio (LLR).
-- **RRD testing:** Utilizes the mean and variance from the read ratio deviation of single-copy classified SNPs to construct a normal confidence interval, validating previously uncertain classified SNPs.
-- **EM algorithm for distance dissection:** Pinpoints distances between seed SNPs within and between multicopy regions. It calculates mean parameters using a mixture of geometric distributions. The cutoff distance is established where the two geometrics have identical density. For increased stability, this process defaults to 1000 repetitions, with the median cutoff selected.
+- **EM algorithm:** Simultaneously fits two Beta-binomial regressions on heterozygote frequency as a function of the minor allele frequencies. One regression fits single-copy regions, while the other fits multicopy regions. SNPs are classified based on the Log-Likelihood Ratio (LLR).
+- **RRD testing:** Utilizes the mean and variance from the read ratio deviation of SNPs classifies as single-copy in the EM-step, to construct a normal confidence interval. This improves the power to detect SNPs that were classified as uncertain in the EM-step.
+- **EM algorithm for distance dissection:** This step fits a mixture of two geometric distributions to the distances among seed SNPs, one for distances within regions and one for distances between regions. The cutoff distance is established where the two geometrics have identical density. For increased stability, by default this process is repeated 1000 times, and the distance cutoff is set to the median across replicates.
 
-Creates two intermediate Output files
+This step automatically generates plots for visualization (see diagnostic plots in the examples section), and it creates two intermediate output files:
 
-- **.EMresults.het** An updated het file with het with stats on EM classification
+- **.EMresults.het** An updated het file with statistics on the EM classification (detail below)
 - **.dist** File containing the distance cutoff
-
-Automated plotting generates visualization:
 
 
 <br>

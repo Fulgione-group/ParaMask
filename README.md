@@ -3,6 +3,7 @@
 
 ParaMask is a method to identify multicopy regions in population-level whole genome data, including tandem or segmental duplications, copy number variants, gene families with various paralog copies, transposable elements, and other repeats. 
 To run ParaMask, we first prepare input files from a vcf (script 1), then we run a first classification of SNPs based on excess heterozygosity and read ratio deviations (script 2), then we cluster collapsed SNPs in multicopy haplotypes (script 3).
+For questions please contact us via [email](btjeng@mpipz.mpg.de). 
 
 ### 1. PrepareParaMaskInput_fromVCF
 \*Note: please do not filter for excess of coverage, since this signal is used in the ParaMask haplotype clustering algorithm.\

@@ -1,4 +1,4 @@
-Copyright (C) 2024 Bastiaan Tjeng and Andrea Fulgione
+Copyright (C) 2024 Bastiaan Tjeng and Andrea Fulgione. Max Planck Institute for Plant Breeding Research
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

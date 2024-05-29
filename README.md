@@ -1,5 +1,6 @@
-**Attantion**
-A new EM intialization has been implemented in verseion EM_
+**Attantion** \
+A new EM intialization has been implemented in verseion ParaMask_EM_v0.2.7.R
+
 
 
 ## Overview

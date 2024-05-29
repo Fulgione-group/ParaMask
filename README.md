@@ -1,3 +1,7 @@
+**Attantion**
+A new EM intialization has been implemented in verseion EM_
+
+
 ## Overview
 <br>
 

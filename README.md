@@ -1,4 +1,4 @@
-**Attantion** \
+**Attention** \
 A new EM intialization has been implemented in version ParaMask_EM_v0.2.7.R, version 0.2.5 is deprecated!!
 
 

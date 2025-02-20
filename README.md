@@ -1,6 +1,6 @@
 \***Attention** \
 A new EM intialization has been implemented in version ParaMask_EM_v0.2.7.1.R, version 0.2.5 is deprecated!!
-
+The latest version ParaMask_EM_v0.2.7.2.R fixes some issues in the LLR calculation for low sample sizes.
 
 
 ## Overview

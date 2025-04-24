@@ -1,4 +1,12 @@
 \***Attention** \
+
+## Change log
+
+### 24.April.2025
+
+The EM step has been modularized into an R package to improve code organization and streamline dependency management. The package is located in the ParaMaskEM/ directory, and installation instructions are provided [here](#install-r-package-paramaskem-from-within-r).
+
+### June.2014
 A new EM intialization has been implemented in version ParaMask_EM_v0.2.7.1.R, version 0.2.5 is deprecated!!
 The latest version ParaMask_EM_v0.2.7.2.R fixes some issues in the LLR calculation for low sample sizes.
 
@@ -57,6 +65,18 @@ In the final step, SNPs are clustered into multicopy haplotypes, and SNPs are cl
 ### Download
 - ```bash
   git clone https://github.com/Fulgione-group/ParaMask.git
+
+### Install R package ParaMaskEM from within R
+```
+# Install devtools if needed
+install.packages("devtools")
+
+# Install the ParaMaskEM package from your repo subdirectory
+devtools::install_github("Fulgione-group/ParaMask", subdir = "ParaMaskEM")
+
+# locate script to run the pipeline with command line args
+system.file("scripts", "run_paramaskem_pipeline.R", package = "ParaMaskEM")
+```
 
 ### Prerequisite
 

@@ -75,7 +75,7 @@ install.packages("devtools")
 devtools::install_github("Fulgione-group/ParaMask", subdir = "ParaMaskEM")
 
 # locate script to run the pipeline with command line args
-system.file("scripts", "run_paramaskem_pipeline.R", package = "ParaMaskEM")
+system.file("scripts", "run_ParaMask_EM.R", package = "ParaMaskEM")
 ```
 
 ### Prerequisite

@@ -83,10 +83,11 @@ system.file("scripts", "run_paramaskem_pipeline.R", package = "ParaMaskEM")
 <br>
 
 #### R
-- R version 4.0.4
-- VGAM version 1.1.8
-- ggplot2 version 3.4.0
-- patchwork 1.1.2
+- R version >= 4.0.4
+- VGAM version >= 1.1.1
+- ggplot2 version >= 3.4.0
+- patchwork >= 1.0.0
+- data.table >= 1.9.4
 
 #### Java
 - java version 1.8 

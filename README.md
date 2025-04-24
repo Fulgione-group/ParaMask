@@ -4,7 +4,7 @@
 
 ### 24.April.2025
 
-The EM step has been modularized into an R package to improve code organization and streamline dependency management. The package is located in the ParaMaskEM/ directory, and installation instructions are provided [here](### Install R package ParaMaskEM from within R).
+The EM step has been modularized into an R package to improve code organization and streamline dependency management. The package is located in the ParaMaskEM/ directory, and installation instructions are provided [here](#install-r-package-paramaskem-from-within-r).
 
 ### June.2014
 A new EM intialization has been implemented in version ParaMask_EM_v0.2.7.1.R, version 0.2.5 is deprecated!!

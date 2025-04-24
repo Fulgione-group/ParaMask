@@ -18,7 +18,6 @@
  *
  * @author btjeng
  */
-
 package ParaMask;
 
 import java.io.BufferedInputStream;
@@ -197,7 +196,7 @@ public class PrepareParaMaskInput_fromVCF {
             int offset = (formatpos + 1);
             linecounter = 0;
             //write the header of the output file
-            writer.write("Chromosome" + "\t" + "Position" + "\t" + "Non-missing" + "\t" + "Minor-allele-freq" + "\t" + "Heterozygous-geno-freq" + "\t" + "Homozygous1-geno-freq" + "\t" + "Homozygous2-geno-freq" + "\t" + "Mean-coverage" + "\t" + "Mean-coverage-hom" + "\t" + "Mean-coverage-het" + "\t" + "Het-reference-allele-depth" + "\t" + "Het-alt-allele-depth" + "\t" + "Het-allele-ratio" + "\t" + "Het-allele-deviation");
+            writer.write("Chromosome" + "\t" + "Position" + "\t" + "Non.missing" + "\t" + "Minor.allele.freq" + "\t" + "Heterozygous.geno.freq" + "\t" + "Homozygous1.geno.freq" + "\t" + "Homozygous2.geno.freq" + "\t" + "Mean.coverage" + "\t" + "Mean.coverage.hom" + "\t" + "Mean.coverage.het" + "\t" + "Het.reference.allele.depth" + "\t" + "Het.alt.allele.depth" + "\t" + "Het.allele.ratio" + "\t" + "Het.allele.deviation");
             writer.newLine();
             //go through the VCF
             while ((line = reader.readLine()) != null) {

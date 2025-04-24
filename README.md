@@ -1,4 +1,4 @@
-\***Attention** \
+\***Attention***
 
 ## Change log
 

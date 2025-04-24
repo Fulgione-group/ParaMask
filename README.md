@@ -58,6 +58,18 @@ In the final step, SNPs are clustered into multicopy haplotypes, and SNPs are cl
 - ```bash
   git clone https://github.com/Fulgione-group/ParaMask.git
 
+### Install R package ParaMaskEM from within R
+```
+# Install devtools if needed
+install.packages("devtools")
+
+# Install the ParaMaskEM package from your repo subdirectory
+devtools::install_github("Fulgione-group/ParaMask", subdir = "ParaMaskEM")
+
+# locate script to run the pipeline with command line args
+system.file("scripts", "run_paramaskem_pipeline.R", package = "ParaMaskEM")
+```
+
 ### Prerequisite
 
 <br>

@@ -87,7 +87,7 @@ system.file("scripts", "run_ParaMask_EM.R", package = "ParaMaskEM")
 - VGAM version >= 1.1.1
 - ggplot2 version >= 3.4.0
 - patchwork >= 1.0.0
-- data.table >= 1.9.4
+- data.table >= 1.12.8
 
 #### Java
 - java version 1.8 

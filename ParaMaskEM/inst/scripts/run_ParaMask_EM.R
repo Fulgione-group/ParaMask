@@ -161,6 +161,9 @@ if(useRRD){
 
 write.table(het, file = paste0(outpath, ID, "_EMresults.het"), quote = FALSE, sep = "\t", col.names = TRUE, row.names = FALSE)
 
+if (sum(het$EM_class == 2, na.rm = TRUE) == 0) {
+  warning("No sites classified as multicopy")
+}
 
 #estimate distance cutoff
 tryCatch({

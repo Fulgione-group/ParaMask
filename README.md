@@ -154,7 +154,7 @@ Rscript --vanilla $PATH_to_pipeline_script_from_ParaMaskEM/run_ParaMask_EM.R\
 | **--tolerance/-t**    | Input tolerance for parameters estimated by the EM algorithm on heterozygote frequency, default: 0.001 |
 | **--startline/-s**    | Integer: Starting line of the het file. Default=2 |
 | **--endline/-e**      | Integer: Ending line of the het file. Default last line|
-| **--boundary/-b**     | **NOT RECOMMENDED** Float: constrain to the upper limit of the MAF*(Z=="K") parameter. This can help with EM convergence in cases where SNPs are clustered in a small range of maf |
+| **--boundary/-b**     | **NOT RECOMMENDED** Float: constrain to the lower,upper limit of the MAF*(Z=="K") parameter. This can help with EM convergence in cases where SNPs are clustered in a small range of maf. If boundaries are exceeded a modified step takes with the lower or upper limit as offset is taken. Disabled by default.|
 
 
 <br>

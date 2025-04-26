@@ -87,7 +87,7 @@ system.file("scripts", "run_ParaMask_EM.R", package = "ParaMaskEM")
 - VGAM version >= 1.1.1
 - ggplot2 version >= 3.4.0
 - patchwork >= 1.0.0
-- data.table >= 1.9.4
+- data.table >= 1.12.8
 
 #### Java
 - java version 1.8 
@@ -154,7 +154,7 @@ Rscript --vanilla $PATH_to_pipeline_script_from_ParaMaskEM/run_ParaMask_EM.R\
 | **--tolerance/-t**    | Input tolerance for parameters estimated by the EM algorithm on heterozygote frequency, default: 0.001 |
 | **--startline/-s**    | Integer: Starting line of the het file. Default=2 |
 | **--endline/-e**      | Integer: Ending line of the het file. Default last line|
-| **--boundary/-b**     | **NOT RECOMMENDED** Float: constrain to the upper limit of the MAF*(Z=="K") parameter. This can help with EM convergence in cases where SNPs are clustered in a small range of maf |
+| **--boundary/-b**     | **NOT RECOMMENDED** Float: constrain to the lower,upper limit of the MAF*(Z=="K") parameter. This can help with EM convergence in cases where SNPs are clustered in a small range of maf. If boundaries are exceeded a modified step takes with the lower or upper limit as offset is taken. Disabled by default.|
 
 
 <br>

@@ -20,13 +20,26 @@ estimate_distance_cutoff <- function(het, dist_em_rep = 100, min_dist = 5, max_d
 
   chrlist <- unique(het$Chromosome)
   distances <- c()
+  distances <- c()
+
   for (chr in chrlist) {
     het_par <- het[het$EM_class == 2 & het$Chromosome == chr, ]
+
     if (nrow(het_par) > 1) {
       dists <- diff(het_par$Position)
-      distances <- c(distances, dists[dists > 0] - 1)
+      dists <- dists[dists > 0]
+
+      if (length(dists) > 0) {
+        distances <- c(distances, dists - 1)
+      }
+    } else {
+      warning(paste("Chromosome", chr, "has <= 1 multicopy SNPs."))
     }
   }
+
+  # After the loop: Remove any NAs from distances
+  distances <- distances[!is.na(distances)]
+
 
   dist_cutoff_samples <- data.frame()
   for (i in seq_len(dist_em_rep)) {

@@ -48,7 +48,7 @@ estimate_distance_cutoff <- function(het, dist_em_rep = 100, min_dist = 5, max_d
     if (p1 < p2) { tmp <- p1; p1 <- p2; p2 <- tmp }
 
     cutoff <- NA
-    for (j in 0:1000) {
+    for (j in 0:10000) {
       d1 <- dgeom(j, prob = p1)
       d2 <- dgeom(j, prob = p2)
       if (d2 / d1 > 0.05) {

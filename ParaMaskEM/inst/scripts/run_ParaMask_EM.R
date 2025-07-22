@@ -159,7 +159,7 @@ if(useRRD){
   })
 }
 
-het$Position <- as.character(het$Position)
+het$Position <- formatC(het$Position, format = "f", digits = 0)
 write.table(het, file = paste0(outpath, ID, "_EMresults.het"), quote = FALSE, sep = "\t", col.names = TRUE, row.names = FALSE)
 het$Position <- as.numeric(het$Position)
 

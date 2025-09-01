@@ -96,7 +96,7 @@ if (!endsWith(outpath, "/")) outpath <- paste0(outpath, "/")
 
 if (is.null(hetpath)) stop("You must provide a --het path to the .het file.")
 
-het <- ParaMaskEM::load_het_file(hetpath, verbose = TRUE)
+het <- ParaMaskEM::load_het_file(hetpath, startline = startline, endline = endline, chr = chr, missingness = missingness, verbose = TRUE)
 
 em_input_data <- ParaMaskEM::prepare_em_input(het, subsample = 10000, verbose = verbose)
 

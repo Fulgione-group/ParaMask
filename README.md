@@ -4,7 +4,7 @@
 
 ### 04.September.2025
 
-Bugs with scientific formating and the missingness filter have been corrected in the ParaMaskEM package. A new test version 1.0.1 has been uploaded with a new flag "--nSNPs [int]" for fitting the EM with a reduced number of [int] randomly selected SNPs, while providing classification of all SNPs.
+Bugs with scientific formating and the missingness filter have been corrected in the ParaMaskEM package. A new test version 1.0.1 has been uploaded with a new flag "--nSNPs [int]" for fitting the EM with a reduced number of [int] randomly selected SNPs, while providing classification of all SNPs, intended for very large data sets. We recommend to use more than 10 000 SNPs.
 
 ### 24.April.2025
 

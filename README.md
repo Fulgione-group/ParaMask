@@ -2,6 +2,10 @@
 
 ## Change log
 
+### 04.September.2025
+
+Bugs with scientific formating and the missingness filter have been corrected in the ParaMaskEM package. A new test version 1.0.1 has been uploaded with a new flag "--nSNPs [int]" for fitting the EM with a reduced number of [int] randomly selected SNPs, while providing classification of all SNPs.
+
 ### 24.April.2025
 
 The EM step has been modularized into an R package to improve code organization and streamline dependency management. The package is located in the ParaMaskEM/ directory, and installation instructions are provided [here](#install-r-package-paramaskem-from-within-r).

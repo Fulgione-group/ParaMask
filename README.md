@@ -10,7 +10,7 @@ Bugs with scientific formating and the missingness filter have been corrected in
 
 The EM step has been modularized into an R package to improve code organization and streamline dependency management. The package is located in the ParaMaskEM/ directory, and installation instructions are provided [here](#install-r-package-paramaskem-from-within-r).
 
-### June.2014
+### June.2024
 A new EM intialization has been implemented in version ParaMask_EM_v0.2.7.1.R, version 0.2.5 is deprecated!!
 The latest version ParaMask_EM_v0.2.7.2.R fixes some issues in the LLR calculation for low sample sizes.
 

@@ -1,6 +1,6 @@
 Package: ParaMaskEM
 Title: EM-Based Classification of Multicopy and Single-Copy SNPs
-Version: 2.7.3
+Version: 1.0.1
 Authors@R:
     person("Bastiaan", "Tjeng", email = "btjeng@mpipz.mpg.de", role = c("aut", "cre"))
 Description: An R implementation of the ParaMaskEM pipeline for distinguishing multicopy from single-copy SNPs using EM clustering of heterozygosity and read-depth metrics.

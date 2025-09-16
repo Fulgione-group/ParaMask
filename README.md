@@ -77,6 +77,8 @@ install.packages("devtools")
 
 # Install the ParaMaskEM package from your repo subdirectory
 devtools::install_github("Fulgione-group/ParaMask", subdir = "ParaMaskEM")
+# Or to install the newer version with --nSNPs
+devtools::install_github("Fulgione-group/ParaMask", subdir = "ParaMaskEM_v1.0.1")
 
 # locate script to run the pipeline with command line args
 system.file("scripts", "run_ParaMask_EM.R", package = "ParaMaskEM")

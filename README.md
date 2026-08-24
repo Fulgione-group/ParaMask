@@ -2,6 +2,10 @@
 
 ## Change log
 
+### 24.August.2026
+
+ParaMaskEM version 1.0.2 adds the optional `--pruneRRD_cutoff [float]` argument. When specified, SNPs with an absolute read ratio deviation exceeding the supplied cutoff are excluded from fitting the heterozygosity-based EM model. All SNPs, including pruned SNPs, are subsequently classified using the fitted model. This option is intended for datasets in which strong read ratio deviation signals may otherwise influence EM parameter estimation. RRD pruning is disabled by default.
+
 ### 04.September.2025
 
 Bugs with scientific formating and the missingness filter have been corrected in the ParaMaskEM package. A new test version 1.0.1 has been uploaded with a new flag "--nSNPs [int]" for fitting the EM with a reduced number of [int] randomly selected SNPs, while providing classification of all SNPs, intended for very large data sets. We recommend to use more than 10 000 SNPs.
@@ -75,10 +79,9 @@ In the final step, SNPs are clustered into multicopy haplotypes, and SNPs are cl
 # Install devtools if needed
 install.packages("devtools")
 
-# Install the ParaMaskEM package from your repo subdirectory
-devtools::install_github("Fulgione-group/ParaMask", subdir = "ParaMaskEM")
-# Or to install the newer version with --nSNPs
-devtools::install_github("Fulgione-group/ParaMask", subdir = "ParaMaskEM_v1.0.1")
+# Install the latest ParaMaskEM version
+devtools::install_github("Fulgione-group/ParaMask", subdir = "ParaMaskEM_v1.0.2"
+)
 
 # locate script to run the pipeline with command line args
 system.file("scripts", "run_ParaMask_EM.R", package = "ParaMaskEM")
@@ -156,7 +159,9 @@ Rscript --vanilla $PATH_to_pipeline_script_from_ParaMaskEM/run_ParaMask_EM.R\
 | **--verbose/-v**      | Verbose shows current steps of ParaMask, fitting process of VGAM, default is false |
 | **--ID**      | Input ID for file naming |
 | **--chrom/-c**        | Input chromosome name to only use a specific chromosome. Default: all chromosomes |
-| **--noRRD**           | Do not use read ratio deviations. Default: True |
+| **--noRRD** | Disable read ratio deviation classification. By default, RRD classification is enabled |
+| **--nSNPs/-ns** | Integer: fit the EM using a randomly selected subset of this many SNPs while subsequently classifying all SNPs. Intended for very large datasets. More than 10,000 SNPs is recommended. Disabled by default |
+| **--pruneRRD_cutoff** | Float: before EM fitting, exclude SNPs with absolute read ratio deviation greater than this cutoff. The fitted model is subsequently used to classify all SNPs, including the excluded SNPs. Intended for datasets where strong RRD signals may influence EM parameter estimation. Disabled by default |
 | **--tolerance/-t**    | Input tolerance for parameters estimated by the EM algorithm on heterozygote frequency, default: 0.001 |
 | **--startline/-s**    | Integer: Starting line of the het file. Default=2 |
 | **--endline/-e**      | Integer: Ending line of the het file. Default last line|

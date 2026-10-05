@@ -163,6 +163,7 @@ Rscript --vanilla $PATH_to_pipeline_script_from_ParaMaskEM/run_ParaMask_EM.R\
 | **--nSNPs/-ns** | Integer: fit the EM using a randomly selected subset of this many SNPs while subsequently classifying all SNPs. Intended for very large datasets. More than 10,000 SNPs is recommended. Disabled by default |
 | **--pruneRRD_cutoff** | Float: before EM fitting, exclude SNPs with absolute read ratio deviation greater than this cutoff. The fitted model is subsequently used to classify all SNPs, including the excluded SNPs. Intended for datasets where strong RRD signals may influence EM parameter estimation. Disabled by default |
 | **--tolerance/-t**    | Input tolerance for parameters estimated by the EM algorithm on heterozygote frequency, default: 0.001 |
+| **--num_it**    | Integer: Maximum number of EM iterations. Default=100 |
 | **--startline/-s**    | Integer: Starting line of the het file. Default=2 |
 | **--endline/-e**      | Integer: Ending line of the het file. Default last line|
 | **--boundary/-b**     | **NOT RECOMMENDED** Float: constrain to the lower,upper limit of the MAF*(Z=="K") parameter. This can help with EM convergence in cases where SNPs are clustered in a small range of maf. If boundaries are exceeded a modified step takes with the lower or upper limit as offset is taken. Disabled by default.|

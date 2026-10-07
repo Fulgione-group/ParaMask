@@ -5,11 +5,12 @@
 #' @param het A data.frame with heterozygosity statistics.
 #' @param subsample Integer: number of variants to subsample for plotting (default = 10000).
 #' @param verbose Whether to print debug output.
-#' @param nSNPs Whether to us a subset of nSNPs to fit EM.
+#' @param nSNPs Number of SNPs to use for EM fitting; 0 uses all eligible SNPs.
+#' @param removeZeroHet Whether to exclude SNPs with heterozygote frequency = 0 from EM fitting.
 #'
 #' @return A list containing regData, regData2, regData3, weights, prediction data, and sampling index.
 #' @export
-prepare_em_input <- function(het, subsample = 10000, nSNPs = 0, pruneRRD = FALSE, pruneRRD_cutoff = 1.96, verbose = FALSE) {
+prepare_em_input <- function(het, subsample = 10000, nSNPs = 0, pruneRRD = FALSE, pruneRRD_cutoff = 1.96, removeZeroHet = FALSE, verbose = FALSE) {
   if (verbose) message("Preparing input for EM...")
 
   # Build regData
@@ -30,7 +31,13 @@ prepare_em_input <- function(het, subsample = 10000, nSNPs = 0, pruneRRD = FALSE
 
   # Rows eligible for EM fitting
   rf <- seq_len(nrow(het))
-
+  # Optional removal of zero-heterozygosity SNPs from EM fitting
+  if (removeZeroHet) {
+    rf <- rf[het$Heterozygous.geno.freq[rf] > 0]
+    if (verbose) {
+      message("Zero-heterozygosity filtering retained ", length(rf), " of ", nrow(het)," SNPs for EM fitting.")
+    }
+  }
   # Optional RRD pruning
   if (pruneRRD) {
     rf <- rf[is.na(het$Het.allele.deviation[rf]) |abs(het$Het.allele.deviation[rf]) <= pruneRRD_cutoff]

@@ -4,7 +4,7 @@
 
 ### 07.October.2026
 
-ParaMaskEM version 1.0.3 introduces bounded maximum-likelihood fitting of the beta-binomial EM model using `optim(..., method = "L-BFGS-B")`. By default, the MAF slope of the single-copy component is constrained to the interval `0,10`; custom bounds can be supplied with `--boundary lower,upper`, and constraints can be disabled with `--noBoundary`. The EM responsibility update bug has also been corrected. The default EM fitting subset is now 50,000 SNPs (`--nSNPs 0` uses all SNPs), while all SNPs are still classified by the fitted model. Chromosome filtering now accepts character chromosome names/IDs and analyzes all chromosomes by default.
+ParaMaskEM version 1.0.3 introduces bounded maximum-likelihood fitting of the beta-binomial EM model using `optim(..., method = "L-BFGS-B")`. By default, the MAF slope of the single-copy component is constrained to the interval `0,10`; custom bounds can be supplied with `--boundary lower,upper`, and constraints can be disabled with `--noBoundary`. The EM responsibility update bug has also been corrected. The default EM fitting subset is now 50,000 SNPs (`--nSNPs 0` uses all SNPs), while all SNPs are still classified by the fitted model. Chromosome filtering now accepts character chromosome names/IDs and analyzes all chromosomes by default. An optional --removeZeroHet flag excludes SNPs with heterozygote frequency = 0 from EM fitting while retaining them for subsequent likelihood-based classification.
 
 
 ### 24.August.2026
@@ -173,7 +173,7 @@ Rscript --vanilla $PATH_to_pipeline_script_from_ParaMaskEM/run_ParaMask_EM.R\
 | **--endline/-e**      | Integer: Ending line of the het file. Default last line|
 | **--boundary/-b**     | Two comma-separated numbers (`lower,upper`) defining bounds for the MAF slope of the single-copy component. Default = `0,10` |
 | **--noBoundary**     | Disable slope boundaries and fit the beta-binomial model without parameter bounds |
-
+| **--removeZeroHet** | Exclude SNPs with heterozygote frequency = 0 from EM fitting. These SNPs are retained and classified afterward using the fitted model. Disabled by default |
 
 <br>
 

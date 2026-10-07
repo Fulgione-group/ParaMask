@@ -27,6 +27,7 @@ if (length(args) == 0 || any(args %in% c("--help", "-h"))) {
   cat("  --noRRD       Disable read ratio deviation classification\n")
   cat("  --nSNPs       Number of SNPs used for EM fitting (default: 50000; 0 = use all SNPs). All SNPs are still classified\n")
   cat("  --pruneRRD_cutoff Absolute RRD cutoff used to prune SNPs before EM fitting; if not specified, RRD pruning is disabled\n")
+  cat("  --removeZeroHet Exclude SNPs with heterozygote frequency = 0 from EM fitting; all SNPs are still classified\n")
   quit(status = 0)
 }
 
@@ -52,6 +53,7 @@ useRRD <- TRUE
 nSNPs <- 50000
 pruneRRD <- FALSE
 pruneRRD_cutoff <- 1.96
+removeZeroHet <- FALSE
 #print args
 for(i in 1:length(args)){
   print(args[i])
@@ -100,6 +102,8 @@ while (i <= length(args)) {
     pruneRRD_cutoff <- as.numeric(args[i + 1])
     pruneRRD <- TRUE
     i <- i + 1
+  } else if (args[i] == "--removeZeroHet") {
+    removeZeroHet <- TRUE
   }
   i <- i + 1
 }
@@ -111,7 +115,7 @@ if (is.null(hetpath)) stop("You must provide a --het path to the .het file.")
 
 het <- ParaMaskEM::load_het_file(hetpath, startline = startline, endline = endline, chr = chr, missingness = missingness, verbose = verbose)
 
-em_input_data <- ParaMaskEM::prepare_em_input(het, subsample = 10000, nSNPs = nSNPs, pruneRRD = pruneRRD, pruneRRD_cutoff = pruneRRD_cutoff, verbose = verbose)
+em_input_data <- ParaMaskEM::prepare_em_input(het, subsample = 10000, nSNPs = nSNPs, pruneRRD = pruneRRD, pruneRRD_cutoff = pruneRRD_cutoff, removeZeroHet = removeZeroHet, verbose = verbose)
 
 #fit initial model
 initial_em_fit <- ParaMaskEM::fit_initial_model(

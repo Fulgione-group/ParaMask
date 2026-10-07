@@ -2,20 +2,25 @@
 
 ## Change log
 
+### 07.October.2026
+
+ParaMaskEM version 1.0.3 introduces bounded maximum-likelihood fitting of the beta-binomial EM model using `optim(..., method = "L-BFGS-B")`. By default, the MAF slope of the single-copy component is constrained to the interval `0,10`; custom bounds can be supplied with `--boundary lower,upper`, and constraints can be disabled with `--noBoundary`. The EM responsibility update has also been corrected so that the two posterior weights are calculated from the same denominator and remain normalized. The default EM fitting subset is now 50,000 SNPs (`--nSNPs 0` uses all SNPs), while all SNPs are still classified by the fitted model. Chromosome filtering now accepts character chromosome names/IDs and analyzes all chromosomes by default.
+
+
 ### 24.August.2026
 
 ParaMaskEM version 1.0.2 adds the optional `--pruneRRD_cutoff [float]` argument. When specified, SNPs with an absolute read ratio deviation exceeding the supplied cutoff are excluded from fitting the heterozygosity-based EM model. All SNPs, including pruned SNPs, are subsequently classified using the fitted model. This option is intended for datasets in which strong read ratio deviation signals may otherwise influence EM parameter estimation. RRD pruning is disabled by default.
 
 ### 04.September.2025
 
-Bugs with scientific formating and the missingness filter have been corrected in the ParaMaskEM package. A new test version 1.0.1 has been uploaded with a new flag "--nSNPs [int]" for fitting the EM with a reduced number of [int] randomly selected SNPs, while providing classification of all SNPs, intended for very large data sets. We recommend to use more than 10 000 SNPs.
+Bugs with scientific formatting and the missingness filter have been corrected in the ParaMaskEM package. A new test version 1.0.1 has been uploaded with a new flag "--nSNPs [int]" for fitting the EM with a reduced number of [int] randomly selected SNPs, while providing classification of all SNPs, intended for very large data sets. We recommend to use more than 10 000 SNPs.
 
 ### 24.April.2025
 
 The EM step has been modularized into an R package to improve code organization and streamline dependency management. The package is located in the ParaMaskEM/ directory, and installation instructions are provided [here](#install-r-package-paramaskem-from-within-r).
 
 ### June.2024
-A new EM intialization has been implemented in version ParaMask_EM_v0.2.7.1.R, version 0.2.5 is deprecated!!
+A new EM initialization has been implemented in version ParaMask_EM_v0.2.7.1.R, version 0.2.5 is deprecated!!
 The latest version ParaMask_EM_v0.2.7.2.R fixes some issues in the LLR calculation for low sample sizes.
 
 
@@ -40,8 +45,8 @@ First, we process a VCF (Variant Call Format) file containing SNPs and output th
 ### 2. ParaMask_EM
 This step produces a first classification of SNPs in single-copy and multicopy regions, employing the following procedures:
 
-- **EM algorithm:** Simultaneously fits two Beta-binomial regressions on heterozygote frequency as a function of the minor allele frequencies. One regression fits single-copy regions, while the other fits multicopy regions. SNPs are classified based on the Log-Likelihood Ratio (LLR).
-- **RRD testing:** Utilizes the mean and variance from the read ratio deviation of SNPs classifies as single-copy in the EM-step, to construct a normal confidence interval. This improves the power to detect SNPs that were classified as uncertain in the EM-step.
+- **EM algorithm:** Fits single-copy and multicopy beta-binomial components to heterozygote frequency as a function of minor allele frequency. In version 1.0.3, model parameters are estimated by maximum likelihood with optional box constraints on the MAF slope. SNPs are classified based on the Log-Likelihood Ratio (LLR).
+- **RRD testing:** Utilizes the mean and variance from the read ratio deviation of SNPs classified as single-copy in the EM-step, to construct a normal confidence interval. This improves the power to detect SNPs that were classified as uncertain in the EM-step.
 - **EM algorithm for distance dissection:** This step fits a mixture of two geometric distributions to the distances among seed SNPs, one for distances within regions and one for distances between regions. The cutoff distance is established where the two geometrics have identical density. For increased stability, by default this process is repeated 1000 times, and the distance cutoff is set to the median across replicates.
 
 This step automatically generates plots for visualization (see diagnostic plots in the examples section), and it creates two intermediate output files:
@@ -53,7 +58,7 @@ This step automatically generates plots for visualization (see diagnostic plots 
 <br>
 
 ### 3. ParaMask_Cluster_Seeds
-In the final step, SNPs are clustered into multicopy haplotypes, and SNPs are classified into single- and multicopy SNPs. If multiple chromosomes are present, this step needs to be run seperately on them. This step outputs the following files:
+In the final step, SNPs are clustered into multicopy haplotypes, and SNPs are classified into single- and multicopy SNPs. If multiple chromosomes are present, this step needs to be run separately on them. This step outputs the following files:
 
 - **.finalClass.het** The original Het file with the final classification of SNPs.
 - **.clusters.txt** Cluster file outlining each multicopy SNP along with its annotation.
@@ -80,7 +85,7 @@ In the final step, SNPs are clustered into multicopy haplotypes, and SNPs are cl
 install.packages("devtools")
 
 # Install the latest ParaMaskEM version
-devtools::install_github("Fulgione-group/ParaMask", subdir = "ParaMaskEM_v1.0.2"
+devtools::install_github("Fulgione-group/ParaMask", subdir = "ParaMaskEM_v1.0.3"
 )
 
 # locate script to run the pipeline with command line args
@@ -152,21 +157,22 @@ Rscript --vanilla $PATH_to_pipeline_script_from_ParaMaskEM/run_ParaMask_EM.R\
 | Option                | Description |
 |-----------------------|-------------|
 |**Required**|
-| **--het/-h**      | Input full path to het file |
+| **--het/-i**      | Input full path to het file |
 |**Optional**|
 | **--outdir/-o**      | Input full path to the output directory |
-| **--missingness/-m**  | Input float, default = 0: no missing sites allowed |
-| **--verbose/-v**      | Verbose shows current steps of ParaMask, fitting process of VGAM, default is false |
+| **--missingness/-m**  | Maximum allowed missingness. Default = 0.1 |
+| **--verbose/-v**      | Show current ParaMask processing and model-fitting progress. Default = false |
 | **--ID**      | Input ID for file naming |
-| **--chrom/-c**        | Input chromosome name to only use a specific chromosome. Default: all chromosomes |
+| **--chrom/-c**        | Chromosome name/ID to analyze. Default: all chromosomes |
 | **--noRRD** | Disable read ratio deviation classification. By default, RRD classification is enabled |
-| **--nSNPs/-ns** | Integer: fit the EM using a randomly selected subset of this many SNPs while subsequently classifying all SNPs. Intended for very large datasets. More than 10,000 SNPs is recommended. Disabled by default |
+| **--nSNPs/-ns** | Integer: number of SNPs randomly selected for EM fitting while subsequently classifying all SNPs. Default = 50000; use 0 to fit on all SNPs. More than 10,000 SNPs is recommended |
 | **--pruneRRD_cutoff** | Float: before EM fitting, exclude SNPs with absolute read ratio deviation greater than this cutoff. The fitted model is subsequently used to classify all SNPs, including the excluded SNPs. Intended for datasets where strong RRD signals may influence EM parameter estimation. Disabled by default |
 | **--tolerance/-t**    | Input tolerance for parameters estimated by the EM algorithm on heterozygote frequency, default: 0.001 |
 | **--num_it**    | Integer: Maximum number of EM iterations. Default=100 |
 | **--startline/-s**    | Integer: Starting line of the het file. Default=2 |
 | **--endline/-e**      | Integer: Ending line of the het file. Default last line|
-| **--boundary/-b**     | **NOT RECOMMENDED** Float: constrain to the lower,upper limit of the MAF*(Z=="K") parameter. This can help with EM convergence in cases where SNPs are clustered in a small range of maf. If boundaries are exceeded a modified step takes with the lower or upper limit as offset is taken. Disabled by default.|
+| **--boundary/-b**     | Two comma-separated numbers (`lower,upper`) defining bounds for the MAF slope of the single-copy component. Default = `0,10` |
+| **--noBoundary**     | Disable slope boundaries and fit the beta-binomial model without parameter bounds |
 
 
 <br>
@@ -302,11 +308,11 @@ Columns:
 ParaMask outputs diagnostic plots in pdf format
 
 1. **iterationN.pdf**
-  * diagnostic plots of posterioir weights of the EM after the Nth iteration
+  * diagnostic plots of posterior weights of the EM after the Nth iteration
 2. **LLR.pdf**
   * Plot of the Log-Likelihood-Ratio
 3. **AR.pdf** and **RRD.pdf**
-  * Plots of allelic ratios and read ratio deviations (and densities) grouped by EM classfication (single-copy, multicopy, uncertain)
+  * Plots of allelic ratios and read ratio deviations (and densities) grouped by EM classification (single-copy, multicopy, uncertain)
 4. **dist.pdf**
   * Distance plot
 <br>
@@ -327,4 +333,3 @@ Folders:
 * **stat.txt**, **cov.gw.txt** and **cov.stat.txt** Computed files by PrepareParaMaskInput_fromVCF
 2. **Output**
   * All files generated by Step 2 and 3.
-

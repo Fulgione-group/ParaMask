@@ -71,6 +71,11 @@ In the final step, SNPs are clustered into multicopy haplotypes, and SNPs are cl
 <br>
 <br>
 
+## Recommendations
+
+For most datasets, we recommend allowing up to 30% missing genotypes per SNP using --missingness 0.3, as this retains informative sites while excluding loci with excessive missing data. For species with extremely low nucleotide diversity but substantial multicopy sequence, strong read-ratio deviation signals can disproportionately influence the heterozygosity-based EM fit; in these cases, we recommend using --pruneRRD_cutoff <value> to exclude strong RRD outliers from model fitting while still classifying them afterward. In strongly structured datasets from predominantly outcrossing species, pooled allele frequencies can also create an excess of SNPs with unexpectedly low or zero heterozygosity, particularly at low minor allele frequencies. In such cases, --removeZeroHet can be used to exclude zero-heterozygosity SNPs from EM fitting while retaining them for final classification.
+
+
 ## installation
 
 <br>

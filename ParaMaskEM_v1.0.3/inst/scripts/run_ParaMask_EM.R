@@ -8,10 +8,10 @@ args <- commandArgs(trailingOnly = TRUE)
 
 # Help message
 if (length(args) == 0 || any(args %in% c("--help", "-h"))) {
-  cat("Usage: Rscript run_paramaskem_pipeline.R --het <input.het> [options]\n")
+  cat("Usage: Rscript run_ParaMask_EM.R --het <input.het> [options]\n")
   cat("Options:\n")
   cat("  --het         Path to .het file (REQUIRED)\n")
-  cat("  --chrom       Chromosome index (default: 0)\n")
+  cat("  --chrom       Chromosome name/ID to analyze (default: all chromosomes)\n")
   cat("  --startline   Start line in het file (default: 2)\n")
   cat("  --endline     End line (0 = all) (default: 0)\n")
   cat("  --missingness Missingness filter (default: 0.1)\n")
@@ -22,9 +22,10 @@ if (length(args) == 0 || any(args %in% c("--help", "-h"))) {
   cat("  --num_it      Max EM iterations (default: 100)\n")
   cat("  --dist_em_rep Repetitions for distance cutoff (default: 1000)\n")
   cat("  --cdist       Use conservative distance estimation\n")
-  cat("  --boundary    Lower,Upper bounds for EM fit, e.g. \"-1000,1000\"\n")
+  cat("  --boundary    Lower,Upper bounds for EM fit (default: \"0,10\")\n")
+  cat("  --noBoundary  Do not use boundaries during fitting\n")
   cat("  --noRRD       Disable read ratio deviation classification\n")
-  cat("  --nSNPs       Number of SNPs for reduced fit, while preserving full classification. Useful for very big data sets\n")
+  cat("  --nSNPs       Number of SNPs used for EM fitting (default: 50000; 0 = use all SNPs). All SNPs are still classified\n")
   cat("  --pruneRRD_cutoff Absolute RRD cutoff used to prune SNPs before EM fitting; if not specified, RRD pruning is disabled\n")
   quit(status = 0)
 }
@@ -40,15 +41,15 @@ verbose <- FALSE
 tolerance <- 0.001
 num_iterations <- 100
 dist_em_rep <- 1000
-chr <- 0
+chr <- NULL
 cdist <- FALSE
 min_dist <- 50
 max_dist <- 5000
-boundfit <- FALSE
-lboundary <- -1000
-uboundary <- 1000
+boundfit <- TRUE
+lboundary <- 0
+uboundary <- 10
 useRRD <- TRUE
-nSNPs <- 0
+nSNPs <- 50000
 pruneRRD <- FALSE
 pruneRRD_cutoff <- 1.96
 #print args
@@ -59,10 +60,10 @@ for(i in 1:length(args)){
 # Simple CLI parser
 i <- 1
 while (i <= length(args)) {
-  if (args[i] %in% c("--het", "-h")) {
+  if (args[i] %in% c("--het", "-i")) {
     hetpath <- args[i + 1]; i <- i + 1
   } else if (args[i] %in% c("--chrom", "-c")) {
-    chr <- as.numeric(args[i + 1]); i <- i + 1
+    chr <- args[i + 1]; i <- i + 1
   } else if (args[i] %in% c("--startline", "-s")) {
     startline <- as.numeric(args[i + 1]); i <- i + 1
   } else if (args[i] %in% c("--endline", "-e")) {
@@ -89,6 +90,8 @@ while (i <= length(args)) {
     uboundary <- as.numeric(strsplit(boundary, ",")[[1]][2])
     boundfit <- TRUE
     i <- i + 1
+  } else if (args[i] == "--noBoundary") {
+    boundfit <- FALSE
   } else if (args[i] %in% c("--cdist", "-cd")) {
     cdist <- TRUE
   } else if (args[i] == "--noRRD") {
@@ -106,12 +109,12 @@ if (!endsWith(outpath, "/")) outpath <- paste0(outpath, "/")
 
 if (is.null(hetpath)) stop("You must provide a --het path to the .het file.")
 
-het <- ParaMaskEM::load_het_file(hetpath, startline = startline, endline = endline, chr = chr, missingness = missingness, verbose = TRUE)
+het <- ParaMaskEM::load_het_file(hetpath, startline = startline, endline = endline, chr = chr, missingness = missingness, verbose = verbose)
 
 em_input_data <- ParaMaskEM::prepare_em_input(het, subsample = 10000, nSNPs = nSNPs, pruneRRD = pruneRRD, pruneRRD_cutoff = pruneRRD_cutoff, verbose = verbose)
 
 #fit initial model
-intial_em_fit <- ParaMaskEM::fit_initial_model(
+initial_em_fit <- ParaMaskEM::fit_initial_model(
   regData2 = em_input_data$regData2,
   weight1 = em_input_data$weight1,
   weight2 = em_input_data$weight2,
@@ -123,16 +126,16 @@ intial_em_fit <- ParaMaskEM::fit_initial_model(
 
 #plot initialization of weights and corresponding model fit
 tryCatch({
-  ParaMaskEM::plot_EM_it(het = het, fit = intial_em_fit$fit, weight1 = em_input_data$weight1, rs = em_input_data$rs, rf = em_input_data$rf, iteration = 0, outpath = outpath, ID = ID)
+  ParaMaskEM::plot_EM_it(het = het, fit = initial_em_fit$fit, weight1 = em_input_data$weight1, rs = em_input_data$rs, rf = em_input_data$rf, iteration = 0, outpath = outpath, ID = ID)
 }, error = function(e) message("Initial EM plot failed: ", conditionMessage(e)))
 
 #run EM algorithm
 EM_results <- ParaMaskEM::run_em_loop(
   regData2 = em_input_data$regData2,
   predDF = em_input_data$predDF,
-  fit = intial_em_fit$fit,
-  coef_fit = intial_em_fit$coef_fit,
-  offsetfit = intial_em_fit$offsetfit,
+  fit = initial_em_fit$fit,
+  coef_fit = initial_em_fit$coef_fit,
+  offsetfit = initial_em_fit$offsetfit,
   em_input_data$weight1,
   em_input_data$weight2,
   maxiter = num_iterations,

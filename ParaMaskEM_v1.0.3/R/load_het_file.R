@@ -5,13 +5,13 @@
 #' @param hetpath Path to the .het file.
 #' @param startline Line number to start reading from (default = 2).
 #' @param endline Line number to stop reading (0 means read full file).
-#' @param chr Optional chromosome to subset by (0 = all chromosomes).
+#' @param chr Optional chromosome to subset by (`NULL` = all chromosomes).
 #' @param missingness Maximum allowed missingness (default = 0.1).
 #' @param verbose Whether to print progress messages.
 #'
 #' @return A filtered `data.frame` with heterozygosity stats.
 #' @export
-load_het_file <- function(hetpath, startline = 2, endline = 0, chr = 0, missingness = 0.1, verbose = FALSE) {
+load_het_file <- function(hetpath, startline = 2, endline = 0, chr = NULL, missingness = 0.1, verbose = FALSE) {
   if (verbose) {
     message("Reading het file...")
   }
@@ -30,8 +30,11 @@ load_het_file <- function(hetpath, startline = 2, endline = 0, chr = 0, missingn
       colnames(het) <- as.character(header)
     }
 
-    if (chr != 0 && "Chromosome" %in% colnames(het)) {
-      het <- het[het$Chromosome == chr, ]
+    if (!is.null(chr) && "Chromosome" %in% colnames(het)) {
+       het <- het[as.character(het$Chromosome) == as.character(chr), ]
+       if (nrow(het) == 0) {
+           stop("No sites found for chromosome: ", chr)
+       }
     }
 
     het <- as.data.frame(het, stringsAsFactors = FALSE)

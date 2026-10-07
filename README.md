@@ -4,7 +4,7 @@
 
 ### 07.October.2026
 
-ParaMaskEM version 1.0.3 introduces bounded maximum-likelihood fitting of the beta-binomial EM model using `optim(..., method = "L-BFGS-B")`. By default, the MAF slope of the single-copy component is constrained to the interval `0,10`; custom bounds can be supplied with `--boundary lower,upper`, and constraints can be disabled with `--noBoundary`. The EM responsibility update has also been corrected so that the two posterior weights are calculated from the same denominator and remain normalized. The default EM fitting subset is now 50,000 SNPs (`--nSNPs 0` uses all SNPs), while all SNPs are still classified by the fitted model. Chromosome filtering now accepts character chromosome names/IDs and analyzes all chromosomes by default.
+ParaMaskEM version 1.0.3 introduces bounded maximum-likelihood fitting of the beta-binomial EM model using `optim(..., method = "L-BFGS-B")`. By default, the MAF slope of the single-copy component is constrained to the interval `0,10`; custom bounds can be supplied with `--boundary lower,upper`, and constraints can be disabled with `--noBoundary`. The EM responsibility update bug has also been corrected. The default EM fitting subset is now 50,000 SNPs (`--nSNPs 0` uses all SNPs), while all SNPs are still classified by the fitted model. Chromosome filtering now accepts character chromosome names/IDs and analyzes all chromosomes by default.
 
 
 ### 24.August.2026
